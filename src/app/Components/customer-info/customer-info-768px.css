@@ -1,0 +1,412 @@
+@media screen and (max-width: 1024px) {
+    .customerinfo_2 {
+        width: 974px;
+        border-radius: 2px;
+        background-color: #FFFFFF;
+        animation: slide 20s infinite;
+    }
+    .pur_lbl2_2 {
+        color: #000000;
+        font-family: "Open Sans";
+        font-size: 14px;
+        line-height: 20px;
+        padding: 15px 25px 15px 30px;
+        border: 1px solid #979797;
+        width: 22%;
+        border-radius: 2px;
+    }
+    .pur_input2_2 {
+        color: #000000;
+        font-family: "Open Sans";
+        font-size: 14px;
+        line-height: 20px;
+        padding: 15px 25px 15px 30px;
+        border: 1px solid #979797;
+        width: 22%;
+        border-radius: 2px;
+    }
+    .conf_btn_2 {
+        height: 40px;
+        width: 200px;
+        border-radius: 3px;
+        background-color: #F56C89;
+        color: #FFFFFF;
+        font-family: "Open Sans";
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22px;
+        margin: 27px 67px 0px 0px;
+        border: none;
+    }
+    .search_in_2 {
+    box-sizing: border-box;
+    height: 40px;
+    width: 340px;
+    position: relative;
+    border: 0.7px solid #DFE5F9;
+    border-radius: 3px;
+    background-color: #FAFBFF;
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    float: right;
+    }
+    .search_icon_2 {
+    display: inline-block;
+    position: absolute;
+    right: 55px;
+    float: right;
+    bottom: 23px;
+    font-size: 20px;
+    width: 15px;
+    }
+    .brand_2{
+        color: rgba(0, 0, 0, 0.85);
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;    
+    padding: 15px 0px 15px 0px;
+    width: 16%;
+    }
+    .brand1_2{
+        color: rgba(0, 0, 0, 0.85);
+    font-family: Roboto;
+    font-size: 14px;   
+    line-height: 22px;    
+    padding: 15px 0px 15px 0px;
+    width: 16%;
+    }
+    .bcpg_2{
+        color: rgba(0, 0, 0, 0.85);
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    width: 11.666667%;
+    padding: 3px 0px 3px 0px;
+    }
+    .bcpg1_2{
+        color: rgba(0, 0, 0, 0.85);
+    font-family: Roboto;
+    font-size: 14px;   
+    line-height: 22px;
+    width: 11.666667%;
+    padding: 15px 0px 15px 0px;
+    }
+    .case_ty{
+        padding: 0px;
+        margin: 0px;
+    }
+    .rdbtn_2{
+        color: #000000;
+    font-family: "Open Sans";
+    font-size: 13px;
+    line-height: 18px;
+    padding: 5px 58px 5px 0px;
+    margin: 0px 0px 0px 0px;
+    }
+    .rdbtn_4[_ngcontent-c2] {
+        color: #000000;
+        font-family: "Open Sans";
+        font-size: 13px;
+        line-height: 18px;
+        padding: 5px 40px 5px 0px;
+        /* width: 85px; */
+    }
+    .amt1[_ngcontent-c2] {
+        font-size: 22px;
+        font-weight: 600;
+        padding: 0px 0px 0px 0px;
+        border: none;
+        background-color: #fff;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .customerinfo_1 {
+        width: 974px;
+        border-radius: 2px;
+        background-color: #FFFFFF;
+        animation: slide 20s infinite;
+        height: 535px;
+    }
+    .main1_1 {
+        padding: 0px;
+        margin-bottom: 20px;
+        margin-right: 200px;
+    }
+    .search_in_1 {
+        box-sizing: border-box;
+        height: 40px;
+        width: 340px;
+        border: 0.7px solid #DFE5F9;
+        border-radius: 3px;
+        background-color: #FAFBFF;
+        display: inline-block;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        float: right;
+    }
+    .search_icon_1 {
+        display: inline-block;
+        position: relative;
+        font-size: 20px;
+        left: 320px;
+        top: 10px;
+    }
+    .add_det_btn_1 {
+        padding: 0px 15px 0px 0px;
+    }
+    .sel {
+        text-align: center;
+        padding: 15px 0px 10px 10px;
+    }
+    .invoice_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+        padding: 15px 0px 15px 10px;
+    }
+    .date_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 17px;
+        padding: 15px 0px 15px 0px;
+    }
+    .date input {
+        padding: 0px 0px 0px 0px;
+        margin: 0px 0px 0px 0px;
+        border: none;
+        width: 15px;
+    }
+    .braname_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+        padding: 15px 0px 15px 0px;
+    }
+    .vehicle_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+        padding: 15px 0px 15px 0px;
+    }
+    .brand_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+        padding: 15px 0px 15px 0px;
+    }
+    .bags_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+        width: 8.666667%;
+        padding: 15px 0px 15px 0px;
+    }
+    .tons_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+        width: 8.666667%;
+        padding: 15px 0px 15px 0px;
+    }
+    .bcpg_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+        width: 15.666667%;
+        padding: 15px 0px 15px 0px;
+    }
+    .price_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+        padding: 15px 0px 15px 0px;
+    }
+    .invoice1_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;
+        line-height: 22px;
+        /* width: 13.666667%; */
+        padding: 15px 0px 15px 10px;
+    }
+    .date1_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;       
+        line-height: 22px;
+        /* width: 11.666667%; */
+        padding: 15px 0px 15px 0px;
+    }
+    .date1 input {
+        padding: 0px 0px 0px 0px;
+        margin: 0px 0px 0px 0px;
+        border: none;
+        width: 15px;
+    }
+    .braname1_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;       
+        line-height: 22px;
+        /* width: 12.666667%; */
+        padding: 15px 0px 15px 0px;
+    }
+    .vehicle1_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;       
+        line-height: 22px;
+        /* width: 16.666667%; */
+        padding: 15px 0px 15px 0px;
+    }
+    .brand1_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;       
+        line-height: 22px;
+        /* width: 10.666667%; */
+        padding: 15px 0px 15px 0px;
+    }
+    .bags1_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;
+        line-height: 22px;
+        width: 8.666667%;
+        padding: 15px 0px 15px 0px;
+    }
+    .tons1_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;        
+        line-height: 22px;
+        width: 8.666667%;
+        padding: 15px 0px 15px 0px;
+    }
+    .bcpg1_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;      
+        line-height: 22px;
+        width: 15.666667%;
+        padding: 15px 0px 15px 0px;
+    }
+    .price1_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;       
+        line-height: 22px;
+        /* width: 13.666667%; */
+        padding: 15px 0px 15px 0px;
+    }
+    /* .sel {
+        text-align: center;
+        padding: 15px 0px 13px 0px;
+    } */
+    .container {
+        display: block;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 20px;
+    }
+    .container input {
+        position: relative;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+    .checkmark_1 {
+        position: absolute;
+        left: 47px;
+        height: 12px;
+        width: 12px;
+        background-color: #eee;
+        margin: 5px 0px 5px 0px;
+    }
+    .container:hover input~.checkmark_1 {
+        background-color: #ccc;
+    }
+    .container input:checked~.checkmark_1 {
+        background-color: #2196F3;
+    }
+    .checkmark_1:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+    .container input:checked~.checkmark_1:after {
+        display: block;
+    }
+    .container .checkmark_1:after {
+        left: 4px;
+        top: 1px;
+        width: 5px;
+        height: 9px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    .pur_lbl_1 {
+        color: #000000;
+        font-family: "Open Sans";
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 18px;
+        padding: 12px 0px 12px 0px;
+        width: 40%;
+    }
+    .pur_input_1 {
+        color: #000000;
+        font-family: "Open Sans";
+        font-size: 13px;
+        line-height: 20px;
+        padding: 12px 0px 12px 0px;
+        width: 180px;
+    }
+    .pur_lbl2_1 {
+        color: #000000;
+        font-family: "Open Sans";
+        font-size: 14px;
+        line-height: 20px;
+        padding: 15px 25px 15px 30px;
+        border: 1px solid #979797;
+        width: 22%;
+        border-radius: 2px;
+    }
+    .pur_input2_1 {
+        color: #000000;
+        font-family: "Open Sans";
+        font-size: 14px;
+        line-height: 20px;
+        padding: 15px 25px 15px 30px;
+        border: 1px solid #979797;
+        width: 22%;
+        border-radius: 2px;
+    }
+}

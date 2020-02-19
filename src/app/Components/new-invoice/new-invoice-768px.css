@@ -1,0 +1,100 @@
+@media screen and (max-width: 768px) {
+    .Newinvoice_1 {
+        width: 974px;
+        height: 1150px;
+        border-radius: 2px;
+        background-color: #FFFFFF;
+        animation: slide 20s infinite;
+    }
+    .rdbtn1_1 {
+        color: #000000;
+        font-family: "Open Sans";
+        font-size: 13px;
+        line-height: 18px;
+        padding: 5px 0px 5px 0px;
+        /* width: 97px; */
+    }
+    .rdbtn2_1 {
+        color: #000000;
+        font-family: "Open Sans";
+        font-size: 13px;
+        line-height: 18px;
+        padding: 5px 0px 5px 0px;
+        /* width: 110px; */
+    }
+    .rdbtn3_1 {
+        color: #000000;
+        font-family: "Open Sans";
+        font-size: 13px;
+        line-height: 18px;
+        padding: 5px 0px 5px 0px;
+        /* width: 113px; */
+    }
+    .sel1 {
+        text-align: center;
+        padding: 20px 0px 15px 0px;
+    }
+    .sel {
+        text-align: center;
+        padding: 15px 10px 15px 10px;
+    }
+    .tons_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 22px;
+        width: 14.666667%;
+        padding: 15px 10px 15px 0px;
+    }
+    .tons1_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 14px;       
+        line-height: 22px;
+        width: 15.666667%;
+        padding: 15px 10px 15px 0px;
+    }
+    .invoice_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 22px;
+        width: 21.666667%;
+        padding: 15px 10px 15px 0px;
+    }
+    .invoice1_1 {
+        color: #1890FF;
+        font-family: Roboto;
+        font-size: 14px;
+        line-height: 22px;
+        width: 14.666667%;
+        padding: 15px 10px 15px 0px;
+    }
+    .mod-head1_1 {
+        width: 100%;
+    }
+    .mod-head1_1 h4 {
+        width: 18%;
+        font-size: 13px;
+        margin: 0px 0px 15px 15px;
+        display: inline-block;
+        overflow: hidden;
+        color: #000000;
+        font-family: "Open Sans";
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 22px;
+    }
+    .select1{
+        position: absolute;
+        z-index: 2000;
+        display: none;    
+        height: 60px;
+        left: 15px;
+        right: 13px;
+        top: 55px;
+        width: 300px;
+    }
+}

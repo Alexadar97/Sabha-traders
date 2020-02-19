@@ -1,0 +1,82 @@
+<div class="main">
+    <div class="customerList customerList_1 customerList_2">
+        <div class="container-fluid">
+            <div class="row1">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="purhead1 purhead1_1 purhead1_2 purhead1_3 col-lg-5 col-sm-5">
+                        <h3><img class="img_icon" src="assets/img/pointer1.png" alt="">Branches</h3>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                    <div class="add_det_btn add_det_btn_1 add_det_btn_2 col-lg-3 col-md-3 col-sm-3">
+                    </div>
+                    <div class="add_det_btn add_det_btn_1 add_det_btn_2 add_det_btn_3 col-lg-3 col-md-3 col-sm-3">
+                        <button (click)="onclick()" class="addnewpur addnewpur_1 addnewpur_2">ADD BRANCH</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal HTML -->
+            <div id="myModal" class="modal fade in">
+                <div class="modal-dialog1 modal-dialog1_1">
+                    <div class="modal-content1 modal-content_1">
+                        <div class="head">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Add Branch</h4>
+                        </div>
+                        <div class="body1">
+                            <div class="container1">
+                                <form [formGroup]="Newbranch" class="form-horizontal">
+                                    <div class="form_body">
+                                        <div class="contant">
+                                            <div class="col-sm-12">
+                                                <span class="pur_lbl">Branch Name</span><br>
+                                                <div class="pur_input">
+                                                    <input formControlName="branchname" minlength="3" type="text" class="form-control"
+                                                        placeholder="" required>
+                                                    <div *ngIf="bname.invalid && bname.touched">
+                                                        <small *ngIf="bname.errors?.required" class="text-danger">Please enter branch name</small>
+                                                        <small *ngIf="bname.errors?.minlength" class="text-danger">Enter Minimum 3 character</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="main2 main2_1">
+                                                <div class="conform" *ngIf="modelbtn=='add'">
+                                                    <!-- *ngIf="modelbtn=='add'" -->
+                                                    <button class="conf_btn" (click)="submit_branch()"
+                                                        >SAVE</button>
+                                                </div>
+                                                <div class="conform" *ngIf="modelbtn=='edit'">
+                                                    <button class="conf_btn" (click)="Update_branch()"
+                                                        >UPDATE</button>
+                                                </div>
+                                                <div class="cancel">
+                                                    <button class="cenc_btn" (click)="cancel()" >CANCEL</button>    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main1">
+                <table class="table table-hover">
+                    <thead class="th_head">
+                        <tr>
+                            <th class="name name_1">Branch Name</th>
+                            <th class="address address_1">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tb_body">
+                        <tr *ngFor="let branch of Branch_List | paginate: { itemsPerPage: 10, currentPage: p1,id: 'one'}; let i=index">
+                            <td class="name1 name1_1">{{branch.branchname}}</td>
+                            <td class="address1 address1_1"><img class="img_icon1" (click)="edit_user(branch._id)" src="assets/img/edit.png" alt="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

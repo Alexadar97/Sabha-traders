@@ -1,0 +1,158 @@
+<div class="main">
+    <div class="newcustomer newcustomer_1 newcustomer_2 newcustomer_3">
+        <div class="container-fluid">
+            <div class="row1">
+                <div class="col-lg-12">
+                    <div class="purhead1 col-lg-5">
+                        <h3><img class="img_icon" src="assets/img/audience1.png" alt="">Add New Customer</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container1">
+            <form [formGroup]="Newcustomer" class="form-horizontal">
+                <div class="form_body">
+                    <div class="contant">
+                        <div class="col-sm-12">
+                            <span class="pur_lbl">Customer Type</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <select formControlName="custtype" name="options" (change)="checkbox($event.target.value)"  class="form-control">
+                                    <option value="null" disabled>Select Customer Type</option>
+                                    <option value="Sub Dealer">Sub Dealer</option>
+                                    <option value="Customer of Sub Dealer">Customer of Sub Dealer</option>
+                                    <option value="Walk in Customer">Walk in Customer</option>                                                                           
+                                </select>                               
+                                <div *ngIf="custype.invalid && custype.touched">
+                                    <small *ngIf="custype.errors?.required" class="text-danger">Please select customer type</small>
+                                </div>
+                            </div>  
+                        </div>
+                        <div class="container1 col-sm-12" *ngIf="search2=='search2'">
+                            <span class="pur_lbl">Select Sub Dealer</span><span class="imp">*</span><br>
+                            <!-- <ejs-dropdownlist formControlName="subdealer" class="form-control" id='country' [dataSource]='data' [fields]='fields' (filtering)='onFiltering($event)' [filterBarPlaceholder]="filterPlaceholder"
+                            [popupHeight]='height' [allowFiltering]='true' [placeholder]='watermark'></ejs-dropdownlist> -->
+                            <input formControlName="subdealer" (input)="search_cusname($event.target.value)"
+                                id="customername" placeholder="Search & select the customer name" autocomplete="off" class="form-control" />
+                                <select style="position: absolute;z-index: 2000;display: none;    height: 60px;
+                                left: 15px;
+                                right: 13px;
+                                top: 55px;
+                                width: 307px;" id="selectcustomer" class="form-control" size="5" (change)="Changeselectcd5($event.target.value)">
+                                    <ng-container *ngFor="let list of cus_name; let i=index">
+                                        <option value={{list?._id}}>{{list?.name}}-{{list?.mobnumber}}</option>
+                                    </ng-container>
+                                    
+                                </select>
+                                <ng-container *ngIf="subdeal.invalid && subdeal.touched">
+                                    <small *ngIf="subdeal.errors?.required" class="text-danger">Please select sub dealer name</small>
+                                </ng-container>
+                                <span *ngIf="case_error =='case_error'" class="text-danger">No Data</span>
+                        </div>                        
+                        <div class="col-sm-12" *ngIf="search2=='search2'">
+                            <span class="pur_lbl">Customer of Sub Dealer Name</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="name" type="text" maxlength="40" onkeypress="return omit_special_char(event)" class="form-control" placeholder="" required>                                
+                                <div *ngIf="csdn.invalid && csdn.touched">
+                                    <small *ngIf="csdn.errors?.required" class="text-danger">Please enter customer name</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" *ngIf="search3=='search3'">
+                            <span class="pur_lbl">Walk in Customer Name</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="name" type="text" maxlength="40" onkeypress="return omit_special_char(event)" class="form-control" placeholder="" required>                                
+                                <div *ngIf="wcn.invalid && wcn.touched">
+                                    <small *ngIf="wcn.errors?.required" class="text-danger">Please enter customer name</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" *ngIf="search1=='search1'">
+                            <span class="pur_lbl">Sub Dealer Name</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="name" type="text" maxlength="40" onkeypress="return omit_special_char(event)" class="form-control" placeholder="" required>                                
+                                <div *ngIf="sdn.invalid && sdn.touched">
+                                    <small *ngIf="sdn.errors?.required" class="text-danger">Please enter sub dealer name</small>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- id="txtDecimals" -->
+                        <div class="col-sm-12">
+                            <span class="pur_lbl">Mobile Number</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="mobnumber" class="form-control" name="elementname"  type="text" minlength="7" maxlength="13" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />                                                      
+                                <div *ngIf="mblnum.invalid && mblnum.touched">
+                                    <small *ngIf="mblnum.errors?.required" class="text-danger">Please enter mobile number</small>
+                                    <small *ngIf="mblnum.errors?.minlength" class="text-danger">Enter Minimum 7 character</small>
+                                    <small *ngIf="mblnum.errors?.maxlength" class="text-danger">Enter Maximum 13 character</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <span class="pur_lbl">Alternate Number 1</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="alternum1" class="form-control" name="elementname"  type="text" minlength="7" maxlength="13" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />                                                      
+                                <div *ngIf="altmblnum1.invalid && altmblnum1.touched">
+                                    <small *ngIf="altmblnum1.errors?.required" class="text-danger">Please enter alternate mobile number</small>
+                                    <small *ngIf="altmblnum1.errors?.minlength" class="text-danger">Enter Minimum 7 character</small>
+                                    <small *ngIf="altmblnum1.errors?.maxlength" class="text-danger">Enter Maximum 13 character</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <span class="pur_lbl">Alternate Number 2</span><br>
+                            <div class="pur_input">
+                                <input formControlName="alternum2" class="form-control" name="elementname"  type="text" minlength="7" maxlength="13" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />                                                      
+                                <div *ngIf="altmblnum2.invalid && altmblnum2.touched">
+                                    <small *ngIf="altmblnum2.errors?.minlength" class="text-danger">Enter Minimum 7 character</small>
+                                    <small *ngIf="altmblnum2.errors?.maxlength" class="text-danger">Enter Maximum 13 character</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <span class="pur_lbl">Email Id</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="emailid" type="text" class="form-control" required>                                
+                                <div *ngIf="email.invalid && email.touched">
+                                    <small *ngIf="email.errors?.required" class="text-danger">Please enter email id</small>
+                                    <small *ngIf="email.errors?.email" class="text-danger">Please enter vaild email id</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <span class="pur_lbl">GSTIN Number</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="gstin" type="text" onkeypress="return AvoidSpace(event)" minlength="15" maxlength="15" class="form-control" placeholder="" required>                                
+                                <div *ngIf="gst.invalid && gst.touched">
+                                    <small *ngIf="gst.errors?.required" class="text-danger">Please enter GSTIN number</small>
+                                    <small *ngIf="gst.errors?.minlength" class="text-danger">Enter Minimum 15 character</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <span class="pur_lbl">Address</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="address" type="text" class="form-control" placeholder="" required>                                
+                                <div *ngIf="addre.invalid && addre.touched">
+                                    <small *ngIf="addre.errors?.required" class="text-danger">Please enter address</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main1 main2 main1_1">
+                            <div class="conform">
+                                <button class="conf_btn conf_btn1" (click)="Submit_Customer()" *ngIf="loc_data == 'add'">SAVE</button>
+                            </div>
+                            
+                            <div class="conform">
+                                <button class="conf_btn conf_btn1" (click)="Update_Customer_info()" *ngIf="loc_data == 'edit'">UPDATE</button>
+                            </div>
+                            <!-- this.modelbtn="add" -->
+                            <div class="cancel">
+                                <button class="cenc_btn" (click)="Cancel()" >CANCEL</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

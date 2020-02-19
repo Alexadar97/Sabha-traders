@@ -1,0 +1,351 @@
+<div class="main">
+    <div class="customerinfo customerinfo_1 customerinfo_2">
+        <div class="container-fluid">
+            <div class="row1">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="mod-head_1 col-lg-5 col-md-5 col-sm-12">
+                        <h3><img class="img_icon" src="assets/img/audience1.png" alt="">Customer Information</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="main1">
+                <div class="wrapper">
+                    <div class="tabs">
+                        <div class="tab">
+                            <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
+                            <label for="tab-1" class="tablinks tab-label">Basic Information</label>
+                            <form class="tab-content">
+                                <div id="basicinfo" class="tabcontent">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="contant">
+                                            <div class="pur_lbl pur_lbl_1 col-sm-6">
+                                                <span>Customer Name</span>
+                                            </div>
+                                            <div class="pur_input pur_input_1 col-sm-6">
+                                                <span>{{(customer?.name !='')? customer?.name:'-'}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="contant">
+                                            <div class="pur_lbl pur_lbl_1 col-sm-6">
+                                                <span>Customer Type</span>
+                                            </div>
+                                            <div class="pur_input pur_input_1 col-sm-6">
+                                                <span>{{(customer?.custtype !='')? customer?.custtype:'-'}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="contant">
+                                            <div class="pur_lbl pur_lbl_1 col-sm-6">
+                                                <span>Sub Dealer Name</span>
+                                            </div>
+                                            <div class="pur_input1 pur_input_1 col-sm-6">
+                                                <span>{{(customer?.subdealer != '')? customer?.subdealer:'-'}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="contant">
+                                            <div class="pur_lbl pur_lbl_1 col-sm-6">
+                                                <span>Mobile Number</span>
+                                            </div>
+                                            <div class="pur_input pur_input_1  col-sm-6">
+                                                <span>{{(customer?.mobnumber!='')? customer?.mobnumber:'-'}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="contant">
+                                            <div class="pur_lbl pur_lbl_1 col-sm-6">
+                                                <span>Alternate Number 1</span>
+                                            </div>
+                                            <div class="pur_input pur_input_1 col-sm-6">
+                                                <span>{{(customer?.alternum1!='')? customer?.alternum1:'-'}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="contant">
+                                            <div class="pur_lbl pur_lbl_1 col-sm-6">
+                                                <span>Alternate Number 2</span>
+                                            </div>
+                                            <div class="pur_input pur_input_1 col-sm-6">
+                                                <span>{{(customer?.alternum2!='')? customer?.alternum2:'-'}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="contant">
+                                            <div class="pur_lbl pur_lbl_1 col-sm-6">
+                                                <span>GSTIN Number</span>
+                                            </div>
+                                            <div class="pur_input pur_input_1 col-sm-6">
+                                                <span>{{(customer?.gstin!='')? customer?.gstin:'-'}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="contant">
+                                            <div class="pur_lbl pur_lbl_1 col-sm-6">
+                                                <span>Address</span>
+                                            </div>
+                                            <div class="pur_input pur_input_1 col-sm-6">
+                                                <span>{{(customer?.address!='')? customer?.address:'-'}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="contant">
+                                            <div class="pur_lbl pur_lbl_1 col-sm-6">
+                                            </div>
+                                            <div class="pur_input pur_input_1 col-sm-6">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="totvalue col-lg-6">
+                                        <div class="contant">
+                                            <div class="pur_lbl2 pur_lbl2_1 pur_lbl2_2 col-sm-6">
+                                                <p>Total Billed</p>
+                                            </div>
+                                            <div class="pur_input2 pur_input2_1 pur_input2_2 col-sm-6">
+                                                <p>₹{{(customer?.totalbilled!="")? customer?.totalbilled:'-' }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="contant">
+                                            <div class="pur_lbl2 pur_lbl2_1 pur_lbl2_2 col-sm-6">
+                                                <p>Total Paid</p>
+                                            </div>
+                                            <div class="pur_input2 pur_input2_1 pur_input2_2 col-sm-6">
+                                                <p>₹{{(customer?.totalpaid!="")? customer?.totalpaid:'-' }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="contant">
+                                            <div class="pur_lbl2 pur_lbl2_1 pur_lbl2_2 col-sm-6">
+                                                <p>Total Balance</p>
+                                            </div>
+                                            <div class="pur_input2 pur_input2_1 pur_input2_2 col-sm-6">
+                                                <p>₹{{(customer?.totalbal!="")? customer?.totalbal:'-' }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="contant">
+                                            <div class="conform conform1 ">
+                                                <button (click)="onclick()" class="conf_btn conf_btn1 conf_btn_2">UPDATE
+                                                    PAYMENT</button>
+                                            </div>
+                                            <div class="cancel cancel1">
+                                                <button class="cenc_btn cenc_btn1" (click)="Cancel1()">Cancel</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="tab">
+                            <input type="radio" (click)="viewbill_det(customer._id)" name="css-tabs" id="tab-2"
+                                class="tab-switch">
+                            <label for="tab-2" class="tablinks tab-label">Billing History</label>
+                            <div class="tab-content">
+                                <div id="billhis" class="tabcontent">
+                                    <div class="row1">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="col-lg-5 col-md-5 col-sm-5"></div>
+                                            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3"></div>
+                                            <div
+                                                class="add_det_btn add_det_btn1 add_det_btn_1 add_det_btn_1 col-lg-3 col-md-12 col-sm-12">
+                                                <input type="text" (input)="search_event($event.target.value)"
+                                                    class="search_in search_in1 search_in_1 search_in_2"
+                                                    placeholder="Search"><img
+                                                    class="search_icon search_icon_2 search_icon1"
+                                                    src="/assets/img/search.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table class="table table-hover">
+                                        <thead class="th_head">
+                                            <tr>
+                                                <th class="invoice invoice_1">Invoice Number</th>
+                                                <th class="date date_1">Date</th>
+                                                <th class="braname braname_1">Branch Name</th>
+                                                <th class="vehicle vehicle_1">Vehicle Number</th>
+                                                <th class="brand brand_1 brand_2">Brand Name</th>
+                                                <th class="bags bags_1">No of Bags</th>
+                                                <th class="tons tons_1">No of Tons</th>
+                                                <th class="bcpg bcpg_1 bcpg_2">Basic Value per Bag</th>
+                                                <th class="price price_1">Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="tb_body">
+                                            <tr
+                                                *ngFor="let bill of bill_history | paginate: { itemsPerPage: currentPageCount, currentPage: p1,id: 'one'}; let i=index">
+                                                <td class="invoice1 invoice1_1">{{bill.invnumber}}</td>
+                                                <td class="date1 date1_1">{{bill.date}}</td>
+                                                <td class="braname1 braname1_1">{{bill.branchname}}</td>
+                                                <td class="vehicle1 vehicle1_1">{{bill.vehnumber}}</td>
+                                                <td class="brand1 brand1_1 brand1_2">{{bill.prodname}}</td>
+                                                <td class="bags1 bags1_1">{{bill.noofbags}}</td>
+                                                <td class="tons1 tons1_1">{{bill.tons}}</td>
+                                                <td class="bcpg1 bcpg1_1 bcpg1_2">{{bill.perbagvalue}}</td>
+                                                <td class="price1 price1_1">{{bill.nettotal}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- <div class="pagination" *ngIf="bill_history.length>10">
+                                        <pagination-controls (pageChange)="p1 = $event" #api id="one">
+                                        </pagination-controls>
+                                    </div> -->
+                                    <div class="pagination" *ngIf="(bill_history?.length!=0 && bill_history?.length>=10) || (show_page == true)">
+                                        <span class="count_page" id="count_span">{{currentPageCount}}<i class="fa fa-angle-up" (click)="count_cal(1)"></i><i
+                                                class="fa fa-angle-down" (click)="count_cal(2)"></i></span>
+                                        <button [disabled]="currentPage == 1" class="btn btn-default paginationbtn"
+                                            (click)="paginatePartList('prev')"><i class="fa fa-angle-left"></i></button>
+                        
+                                        <ng-container *ngFor="let data of paginationCount; let i=index">
+                                            <!-- <ng-container *ngIf="data<=3"> -->
+                                            <span class="count_page add_pagecolor" *ngIf="pagecount == i"
+                                                (click)="paginationClick(i+1)">{{data}}</span>
+                                            <span class="count_page" *ngIf="pagecount != i" (click)="paginationClick(i)">{{data}}</span>
+                                            <!-- </ng-container> -->
+                                        </ng-container>
+                        
+                                        <button [disabled]="currentPage == totalPages" class="btn btn-default paginationbtn"
+                                            (click)="paginatePartList('next')"><i class="fa fa-angle-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog1_mod modal-dialog1_1">
+        <div class="modal-content1 modal-content_1">
+            <div class="head_mod">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title_mod">Add Payment</h4>
+            </div>
+            <div class="body1_mod">
+                <div class="container1_mod">
+                    <form [formGroup]="Addpayment" class="form-horizontal">
+                        <div class="form_body_mod">
+                            <div class="contant">
+                                <div>
+                                    <div class="contant col-lg-12">
+                                        <div class="case_ty col-sm-6" *ngIf="modelbtn1=='pay'">
+                                            <span class="pur_lbl_mod">Case type</span><span class="imp">*</span><br>
+                                            <div class="pur_input">
+                                                <div class="rdbtn1 rdbtn_2 rdbtn1_1 col-sm-2">
+                                                    <label class="container">Cash
+                                                        <input type="radio" (click)="checkbox1($event.target.value)"
+                                                            name="type" formControlName="type" value="Cash" />
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="rdbtn4 rdbtn4 rdbtn_4 rdbtn4_1 col-sm-2">
+                                                    <label class="container">Cheque
+                                                        <input type="radio" (click)="checkbox2($event.target.value)"
+                                                            name="type" formControlName="type" value="Cheque" />
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <ng-container *ngIf="ctype.invalid && ctype.touched">
+                                                    <small *ngIf="ctype.errors?.required" class="text-danger">Please
+                                                        select case
+                                                        type</small>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                        <div class="case_ty col-sm-6">
+                                            <span class="pur_lbl">Pending Amount</span><br>
+                                            <ng-container>
+                                                <div class="pur_input">
+                                                    <input currencyMask formControlName="pendingamount" class="amt amt1"
+                                                        disabled />
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                        <div class="col-sm-12" *ngIf="modelbtn=='CASE1'">
+                                            <div class="col-sm-6">
+                                                <span class="pur_lbl_mod">Cash</span><span class="imp">*</span><br>
+                                                <div class="pur_input">
+                                                    <input formControlName="cashamount"
+                                                        (input)="input_case_amt($event.target.value)" type="text"
+                                                        maxlength="20" name="elementname"
+                                                        onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 100) ? null : event.charCode >= 48 && event.charCode <= 57"
+                                                        class="form-control form-control1_1" placeholder="" required>
+                                                    <ng-container *ngIf="cash.invalid && cash.touched">
+                                                        <small *ngIf="cash.errors?.required" class="text-danger">Please
+                                                            enter
+                                                            cash</small>
+                                                    </ng-container>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contant col-lg-12" *ngIf="modelbtn=='Cheque'">
+                                        <div class="col-sm-6">
+                                            <span class="pur_lbl_mod">Cheque Amount</span><span class="imp">*</span><br>
+                                            <div class="pur_input">
+                                                <input formControlName="chequeamount"
+                                                    (input)="input_cheque_amt($event.target.value)" type="text"
+                                                    maxlength="20" name="elementname"
+                                                    onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 100) ? null : event.charCode >= 48 && event.charCode <= 57"
+                                                    class="form-control" placeholder="" required>
+                                                <ng-container *ngIf="chvalue.invalid && chvalue.touched">
+                                                    <small *ngIf="chvalue.errors?.required" class="text-danger">Please
+                                                        enter cheque amount</small>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <span class="pur_lbl_mod">Cheque No</span><span class="imp">*</span><br>
+                                            <div class="pur_input">
+                                                <input formControlName="chequenumber" type="text" maxlength="6"
+                                                    name="elementname"
+                                                    onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 100) ? null : event.charCode >= 48 && event.charCode <= 57"
+                                                    class="form-control" placeholder="" required>
+                                                <ng-container *ngIf="chno.invalid && chno.touched">
+                                                    <small *ngIf="chno.errors?.required" class="text-danger">Please
+                                                        enter cheque no</small>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <span class="pur_lbl_mod">Bank Name</span><span class="imp">*</span><br>
+                                            <div class="pur_input">
+                                                <input formControlName="bankname" type="text" class="form-control"
+                                                    placeholder="" required>
+                                                <div *ngIf="bankname.invalid && bankname.touched">
+                                                    <small *ngIf="bankname.errors?.required" class="text-danger">Please
+                                                        enter bank name</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <span class="pur_lbl_mod">Cheque Date</span><span class="imp">*</span><br>
+                                            <div class="pur_input">
+                                                <!-- <input formControlName="chequedate" type="date" class="form-control"
+                                                    placeholder="" required> -->
+                                                <input type="text" [minDate]="today" formControlName="chequedate"
+                                                    placement="top" placeholder="DD-MM-YYYY" class="form-control"
+                                                    autocomplete="off" bsDatepicker
+                                                    [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY' }"
+                                                    id="chequeDate">
+
+                                                <div *ngIf="chdate.invalid && chdate.touched">
+                                                    <small *ngIf="chdate.errors?.required" class="text-danger">Please
+                                                        enter cheque date</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main2_mod main2_1">
+                                    <div class="conform_mod">
+                                        <button class="conf_btn_mod" (click)="Submit_Payment()"
+                                            *ngIf="modelbtn1=='pay'">UPDATE</button>
+                                    </div>
+                                    <div class="cancel_mod">
+                                        <button class="cenc_btn_mod" (click)="Cancel()">CANCEL</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

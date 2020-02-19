@@ -1,0 +1,47 @@
+@media screen and (max-width: 768px) {
+    .Newpurchase_1 {
+        width: 974px;
+        border-radius: 2px;
+        background-color: #FFFFFF;
+        animation: slide 20s infinite;
+    }
+    .mod-head_1 {
+        width: 100%;
+    }
+    .mod-head_1 h4 {
+        width: 18%;
+        font-size: 13px;
+        margin: 0px 0px 15px 15px;
+        display: inline-block;
+        overflow: hidden;
+        color: #000000;
+        font-family: "Open Sans";
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 22px;
+    }
+    .mod-head_1 p {
+        width: 75%;
+        border-bottom: 1px solid #e5e5e5;
+        margin: 0px 0px 15px 15px;
+        display: inline-block;
+        overflow: hidden;
+    }
+    .tons_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 22px;
+        width: 12.666667%;
+        padding: 7px 0px 7px 0px;
+    }
+    .tons1_1 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 14px;       
+        line-height: 22px;
+        width: 12.666667%;
+        padding: 10px 15px 10px 0px;
+    }
+}

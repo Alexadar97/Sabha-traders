@@ -1,0 +1,111 @@
+<div class="main">
+    <div class="paymentlist paymentlist_1 paymentlist_2 paymentlist_3">
+        <div class="container-fluid">
+            <div class="row1">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="purhead1 purhead1_1 purhead1_2 purhead1_3 purhead1_4 col-lg-5 col-sm-5">
+                        <h3><img class="img_icon" src="assets/img/payment1.png" alt="">Payments</h3>
+                    </div>
+                    <div class="purfil purfil1 col-lg-1 col-sm-1" [formGroup]="Payment_Filiter">
+                        <button (click)="onFilter()"
+                            class="filter_btn filter_btn_1 filter_btn_2 filter_btn_3 filter_btn_4"><img
+                                src="/assets/img/Group 3.png"><span class="fil_num"
+                                *ngIf="icon">{{Payment_List.length}}</span></button>
+                        <span class="tooltiptext tooltiptext1 tooltiptext2" *ngIf="filiter=='filiter'">
+                            <div class="col-xs-12">
+                                <span class="lbl col-xs-6">Date:</span>
+                                <div class="txt col-xs-6">
+                                    <!-- <input type="date" id="Date" class="form-control" formControlName="date"> -->
+                                    <input type="text" formControlName="date" placeholder="DD-MM-YYYY" class="form-control" autocomplete="off" bsDatepicker [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY' }" id="Date">
+                                     
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <span class="lbl col-xs-6">Bank Name:</span>
+                                <div class="txt col-xs-6">
+                                    <ng-multiselect-dropdown [placeholder]="''" id="select" [(data)]="Bank_Filiter_list"
+                                        [(ngModel)]="selectedItems" formControlName="bankNames"
+                                        [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+                                        (onSelectAll)="onSelectAll($event)" class="form-control">
+                                    </ng-multiselect-dropdown>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="flt_btn1 col-xs-6">
+                                    <button (click)="clear_filiter()" class="clr_flt">Clear Filters</button>
+                                </div>
+                                <div class="flt_btn2 col-xs-6">
+                                    <button class="aply_flt" (click)="Apply_filter()">Apply Filters</button>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+
+                    <div class="add_det_btn add_det_btn_1 add_det_btn_2 col-lg-3 col-sm-3">
+                        <input type="text" (input)="search_event($event.target.value)" placeholder="Search"
+                            class="search_in search_in_1 search_in_2 search_in_3 search_in_4"><img
+                            class="search_icon search_icon_4" src="/assets/img/search.png">
+                    </div>
+                    <div class="add_det_btn add_det_btn_1 add_det_btn_2 add_det_btn_3 add_det_btn_4 col-lg-3 col-sm-3">
+                        <button routerLink="/dashbord/payment"
+                            class="addnewpur addnewpur_1 addnewpur_2 addnewpur_3 addnewpur_4">ADD PAYMENT</button>
+                    </div>
+                </div>
+            </div>
+            <div class="main1">
+                <table class="table table-hover">
+                    <thead class="th_head">
+                        <tr>
+                            <th class="date date_1 date_2">Date&nbsp;&nbsp;</th>
+                            <th class="customername customername_1">Customer Name</th>
+                            <th class="pendingamount pendingamount_1">Pending Amount</th>
+                            <th class="Cash Cash_1">Cash</th>
+                            <th class="chequevalue chequevalue_1">Cheque Value</th>
+                            <th class="bankname bankname_1">Bank Name</th>
+                            <th class="chequeno chequeno_1">Cheque Number</th>
+                            <th class="chequedate chequedate_1">Cheque Date</th>
+                            <th class="balance balance_1">Balance</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="tb_body">
+                        <tr
+                            *ngFor="let payment of Payment_List | paginate: { itemsPerPage: currentPageCount, currentPage: p1,id: 'one'}; let i=index">
+                            <td class="date1 date1_1">{{payment.createddate}}</td>
+                            <td class="customername1 customername1_1">{{payment.customer.name}}</td>
+                            <td class="pendingamount1 pendingamount1_1">
+                                {{(payment?.pendingamount !="") ? payment?.pendingamount : '-'}}</td>
+                            <td class="Cash1 Cash1_1">{{(payment?.cashamount !="") ? payment?.cashamount : '-'}}</td>
+                            <td class="chequevalue1 ">{{(payment?.chequeamount !="") ? payment?.chequeamount : '-'}}
+                            </td>
+                            <td class="bankname1 bankname1_1">{{(payment?.bankname !="") ? payment?.bankname : '-'}}
+                            </td>
+                            <td class="chequeno1 chequeno1_1">
+                                {{(payment?.chequenumber !="") ? payment?.chequenumber : '-'}}</td>
+                            <td class="chequedate1 chequedate1_1">
+                                {{(payment.chequedate !="")? payment?.chequedate : '-' }}</td>
+                            <td class="balance1 balance1_1">{{(payment?.balance !="") ? payment?.balance : '-'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination" *ngIf="(Payment_List?.length!=0 && Payment_List?.length>=10) || (show_page == true)">
+                <span class="count_page" id="count_span">{{currentPageCount}}<i class="fa fa-angle-up" (click)="count_cal(1)"></i><i
+                        class="fa fa-angle-down" (click)="count_cal(2)"></i></span>
+                <button [disabled]="currentPage == 1" class="btn btn-default paginationbtn"
+                    (click)="paginatePartList('prev')"><i class="fa fa-angle-left"></i></button>
+
+                <ng-container *ngFor="let data of paginationCount; let i=index">
+                    <!-- <ng-container *ngIf="show_page == true"> -->
+                    <span class="count_page add_pagecolor" *ngIf="pagecount == i"
+                        (click)="paginationClick(i+1)">{{data}}</span>
+                    <span class="count_page" *ngIf="pagecount != i" (click)="paginationClick(i)">{{data}}</span>
+                    <!-- </ng-container> -->
+                </ng-container>
+
+                <button [disabled]="currentPage == totalPages" class="btn btn-default paginationbtn"
+                    (click)="paginatePartList('next')"><i class="fa fa-angle-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

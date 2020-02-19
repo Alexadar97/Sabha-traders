@@ -1,0 +1,16 @@
+@media screen and (max-width: 768px) {
+    .container1 {
+        width: 974px;
+        padding: 0px 0px;
+        height: 1125px;
+    }
+    .main1 {
+        padding: 15px 30px;
+        position: relative;
+        top: 70px;
+        background-color: #F3F6FE;
+        margin: 0px 0px 0px 208px;
+        width: 85%;
+        height: 1185px;
+    }
+}

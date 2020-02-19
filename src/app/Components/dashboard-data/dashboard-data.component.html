@@ -1,0 +1,339 @@
+<div class="main">
+    <div class="dashboard_data dashboard_data_1 dashboard_data_2">
+        <div class="container-fluid">
+            <div class="row1">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="purhead_1 col-md-3">
+                        <div class="col-md-6">
+                            <h3>Sales</h3>
+                        </div>
+                        <div class="col-md-6" style="padding-right: 0px;">
+                            <input type="text" style="padding: 0px 4px;"
+                                placeholder="DD-MM-YYYY" class="form-control" autocomplete="off" bsDatepicker
+                                [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY' }" id="Date1"
+                                (bsValueChange)="salelsDate($event)">
+
+                            <!-- <input style="padding: 0px 4px;" id="date" type="date"
+                                (change)="salelsDate($event.target.value)" class="form-control" /> -->
+                        </div>
+                    </div>
+                    <div class="col-md-9" style="padding-left: 32px;">
+                        <div class="col-md-2" style="padding-left: 2px;">
+                            <h3 style="line-height: 12px;">Invoices</h3>
+                        </div>
+                        <div class="col-md-2" style="padding: 0px;">
+                            <!-- <input style="padding: 0px 4px;" id="date" type="date" class="form-control"
+                                (change)="InvoiceDate($event.target.value)" /> -->
+                            <input type="text" style="padding: 0px 4px;" (bsValueChange)="InvoiceDate($event)"
+                                placeholder="DD-MM-YYYY" class="form-control" autocomplete="off" bsDatepicker
+                                [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY' }" id="Date2">
+
+                        </div>
+                        <ng-container *ngIf="invoiceList.length>0">
+                            <div class="col-md-6">
+                                <ng-container *ngFor="let data of InvoiceBranch; let i=index">
+                                    <section class="invoice_bg">
+                                        <span>{{data.name}} : </span><span style="color: #000000;">{{data.value}}</span>
+                                    </section>
+                                </ng-container>
+
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="invoiceList.length==0">
+                            <div class="col-md-6">
+                                <h4 style="margin: 3% 0% 0% 0%;font-size: 16px;">No branch</h4>
+                            </div>
+                        </ng-container>
+                        <div class="col-md-2">
+                            <div class="col-md-12">
+                                <button class="conf_btn" (click)="Invoice()"><img class="img_icon1 img_icon2"
+                                        src="assets/img/edit1.png" alt="">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main1">
+                    <div class="down col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="down1 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <div class="hd col-sm-12 col-xs-12">Payments Received:</div>
+                            <div class="num col-sm-12 col-xs-12">{{paymentRecieved}}</div>
+                            <div class="datas col-sm-12 col-xs-12">
+                                <div class="contant1">
+                                    <div class="pur_lbl1  pur_lbl_1 col-sm-6">
+                                        <span>Brand</span>
+                                    </div>
+                                    <div class="pur_input1 pur_input_1 col-sm-6">
+                                        <span>Bags</span>
+                                    </div>
+                                </div>
+                                <div class="contant">
+                                    <ng-container *ngIf="salesList.length>0">
+                                        <ng-container *ngFor="let data of salesList; let i=index">
+                                            <div class="col-md-10" style="padding-left:0">
+                                                <span class="brand_name">{{data.name}}</span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <span class="brand_value">{{data.value}}</span>
+                                            </div>
+                                        </ng-container>
+                                    </ng-container>
+                                    <ng-container *ngIf="salesList.length==0">
+                                        <h4 style="margin: 14% 0% 12% 22%;">No data available</h4>
+                                    </ng-container>
+                                </div>
+                                <div class="contant">
+                                    <div class="pur_lbl pur_lbl_1 col-sm-6">
+                                    </div>
+                                    <div class="pur_input pur_input_1 col-sm-6">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9" style="padding-left: 32px">
+                            <table class="table" *ngIf="invoiceList.length>0">
+                                <thead class="th_head">
+                                    <tr>
+                                        <th style="width: 5%;">S.No</th>
+                                        <th>Invoice Number</th>
+                                        <th>Product Name</th>
+                                        <th>Customer Name</th>
+                                        <th>Total Bags Value</th>
+                                        <th>Total Tons</th>
+                                        <th>Unit Price</th>
+                                        <th>Total Amount</th>
+                                    </tr>
+                                </thead>
+                                
+                                <!-- ((p1- 1) * 10 )+ (i+1) -->
+                                <tbody class="tb_body">
+                                    <ng-container
+                                        *ngFor="let data of invoiceList | paginate: { itemsPerPage: currentPageCount, currentPage: p1,id: 'two'}; let i=index">
+                                        <tr>
+                                            <td style="text-align: center">{{((currentPage - 1) * 10 + (i+1))}}</td>
+                                            <td>{{(data?.invnumber !="") ? data?.invnumber : '-'}}</td>
+                                            <td>{{(data?.prodname !="") ? data?.prodname : '-'}}</td>
+                                            <td>{{(data?.customername !="") ? data?.customername : '-'}}</td>
+                                            <td>{{(data?.totbagvalue !="") ? data?.totbagvalue : '-'}}</td>
+                                            <td>{{(data?.tons !="") ? data?.tons : '-'}}</td>
+                                            <td>{{(data?.perbagvalue !="") ? data?.perbagvalue : '-'}} ₹</td>
+                                            <td>{{(data?.nettotal !="") ? data?.nettotal : '-'}} ₹</td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                            <h4 *ngIf="invoiceList.length==0" style="margin: 23% 0% 0% 38%;">No data available</h4>
+                            <div style="float: right;" class="pagination" *ngIf="(invoiceList?.length!=0 && invoiceList?.length>=10) || (show_page == true)">
+                                <span class="count_page" id="count_span">{{currentPageCount}}<i class="fa fa-angle-up" (click)="count_cal(1)"></i><i
+                                        class="fa fa-angle-down" (click)="count_cal(2)"></i></span>
+                                <button [disabled]="currentPage == 1" class="btn btn-default paginationbtn"
+                                    (click)="paginatePartList('prev')"><i class="fa fa-angle-left"></i></button>
+                
+                                <ng-container *ngFor="let data of paginationCount; let i=index">
+                                    <!-- <ng-container *ngIf="data<=3"> -->
+                                    <span class="count_page add_pagecolor" *ngIf="pagecount == i"
+                                        (click)="paginationClick(i+1)">{{data}}</span>
+                                    <span class="count_page" *ngIf="pagecount != i" (click)="paginationClick(i)">{{data}}</span>
+                                    <!-- </ng-container> -->
+                                </ng-container>
+                
+                                <button [disabled]="currentPage == totalPages" class="btn btn-default paginationbtn"
+                                    (click)="paginatePartList('next')"><i class="fa fa-angle-right"></i></button>
+                            </div>
+                        </div>
+                        <!-- <div class="pagination col-md-12" *ngIf="invoiceList.length>10"
+                            style="text-align: right;padding-right: 0px;">
+                            <pagination-controls (pageChange)="p1 = $event" #api id="one">
+                            </pagination-controls>
+                        </div> -->
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row1">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="purhead1_1 col-lg-12 col-sm-12">
+                        <div class="col-sm-8">
+                            <h3>Product Wise SalesTrend</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main2">
+                <div class="graph col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="down3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <div class="tabbable tabs-left">
+                            <ul class="nav nav-tabs">
+                                <ng-container *ngIf="productNameList.length>0">
+                                    <ng-container *ngFor="let data of productNameList; let i=index">
+                                        <li *ngIf="selectedSideBar == i" class="active"><a href="#RSF" data-toggle="tab"
+                                                id="list" (click)="product_dashboard(data)">{{data}}</a></li>
+                                        <li *ngIf="selectedSideBar != i"><a href="#RSF" data-toggle="tab" id="list"
+                                                (click)="product_dashboard(data,i)">{{data}}</a></li>
+                                    </ng-container>
+                                </ng-container>
+                                <ng-container *ngIf="productNameList.length>0">
+                                    <h4 *ngIf="productNameList.length==0" style="margin: 23% 0% 0% 38%;">No data
+                                        available</h4>
+                                </ng-container>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="down3 col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <ng-container *ngIf="branchList.length>0">
+                                        <div class="col-md-3" *ngFor="let data of branchList; let i=index">
+                                            <section class="product_bg" *ngIf="branchList.length>0">
+                                                <span>{{data.name}} : </span><span
+                                                    style="color: #000000;">{{data.value}}</span>
+                                            </section>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="branchList.length==0">
+                                        <div class="col-md-3">
+                                            <h4 *ngIf="branchList.length==0"
+                                                style="white-space: nowrap;padding-top: 7px;font-size: 16px;">No branch
+                                            </h4>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="col-md-4">
+                                        <form>
+                                            <select name="month" id="month" class="form-control"
+                                                style="margin-top: 13px;" (change)="month($event.target.value)"
+                                                *ngIf="monthvalue">
+                                                <ng-container *ngFor="let data of itmonths; let i=index">
+                                                    <option value={{data.months}}>{{data.months}}</option>
+                                                </ng-container>
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-8" style="text-align: right;display: flex;">
+                                        <select id="year" name="year" class="form-control"
+                                            style="margin-top: 13px;width: 33%;" (change)="year($event.target.value)">
+                                            <option disabled selected value="null">Select Year</option>
+                                            <ng-container *ngFor="let data of yearlist; let i=index">
+                                                <option value={{data}}>{{data}}</option>
+                                            </ng-container>
+                                        </select>
+                                        <section class="product_bg">
+                                            <div class="btn-group" id="group_btn" role="group"
+                                                aria-label="Basic example">
+                                                <button type="button" id="btn-one" class="btn btn-secondary"
+                                                    (click)="grp_btn(1)">Monthly</button>
+                                                <button type="button" id="btn-two" class="btn btn-secondary"
+                                                    (click)="grp_btn(2)">Weekly</button>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="RSF">
+                                    <div id="container1"></div>
+                                </div>
+                                <div class="tab-pane" id="RSB">
+                                    <div id="container2"></div>
+                                </div>
+
+                                <div class="tab-pane" id="OPC">
+                                    <div id="container3"></div>
+                                </div>
+
+                                <div class="tab-pane" id="RK">
+                                    <div id="container4"></div>
+                                </div>
+                                <div class="tab-pane" id="PPC">
+                                    <div id="container5"></div>
+                                </div>
+                                <div class="tab-pane" id="SPL">
+                                    <div id="container6"></div>
+                                </div>
+                                <div class="tab-pane" id="RSC">
+                                    <div id="container7"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invoice Modal -->
+    <div class="modal fade" id="invoice_modal">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border: none;">
+                    <div class="col-md-6">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Invoices</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body" style="padding: 0px 10px;">
+                    <table id="modal_table" class="table" [formGroup]="InvoiceForm" *ngIf="rowForms.controls.length>0">
+                        <thead class="th_head">
+                            <tr>
+                                <th class="invoice invoice_1">Invoice Number</th>
+                                <th class="product product_1">Product Name</th>
+                                <th class="vehicle vehicle_1">Customer Name</th>
+                                <th class="bags bags_1">Total Bags</th>
+                                <th class="tons tons_1">Total Tons</th>
+                                <th class="date date_1">Unit Price</th>
+                                <th class="amount amount_1">Total Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tb_body" formArrayName="invoice">
+                            <ng-container *ngFor="let part of rowForms.controls | paginate: { itemsPerPage: currentPageCount, currentPage: p1,id: 'one'}; let i=index" [formGroupName]="i">
+                                <tr>
+                                    <td class="invoice1 invoice1_1">{{rowForms.value[i].invnumber}}</td>
+                                    <td class="invoice1 invoice1_1">{{rowForms.value[i].prodname}}</td>
+                                    <td class="invoice1 invoice1_1">{{rowForms.value[i].customername}}</td>
+                                    <td><input id="input" type="text" class="form-control"
+                                            formControlName="totbagvalue">
+                                    </td>
+                                    <td><input id="input" type="text" class="form-control" formControlName="tons"></td>
+                                    <td><input id="input" type="text" class="form-control"
+                                            formControlName="perbagvalue">
+                                    </td>
+                                    <td><input id="input" type="text" class="form-control" formControlName="nettotal">
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                    <h4 *ngIf="rowForms.controls.length==0" style="margin: 2% 0% 0% 44%;">No date available</h4>
+                    <!-- <div style="text-align: right;" class="pagination col-xs-12" *ngIf="(rowForms.controls?.length!=0 && rowForms.controls?.length>=11) || (show_page1 == true)">
+                        <span class="count_page" id="count_span1">{{currentPageCount1}}<i class="fa fa-angle-up" (click)="count_cal1(1)"></i><i
+                                class="fa fa-angle-down" (click)="count_cal1(2)"></i></span>
+                        <button [disabled]="currentPage1 == 1" class="btn btn-default paginationbtn"
+                            (click)="paginatePartList1('prev')"><i class="fa fa-angle-left"></i></button>
+        
+                        <ng-container *ngFor="let data of paginationCount1; let i=index">
+                           
+                            <span class="count_page add_pagecolor" *ngIf="pagecount1 == i"
+                                (click)="paginationClick1(i+1)">{{data}}</span>
+                            <span class="count_page" *ngIf="pagecount != i" (click)="paginationClick1(i)">{{data}}</span>
+                           
+                        </ng-container>
+        
+                        <button [disabled]="currentPage1 == totalPages1" class="btn btn-default paginationbtn"
+                            (click)="paginatePartList1('next')"><i class="fa fa-angle-right"></i></button>
+                    </div> -->
+                </div>
+                <div class="modal-footer" style="border: none;">
+                    <button type="button" id="cancel_btn" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                    <button type="button" id="save_btn" class="btn btn-primary" (click)="InvoiceSave()">SAVE</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>

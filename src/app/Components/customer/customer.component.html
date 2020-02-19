@@ -1,0 +1,67 @@
+<div class="main">
+    <div class="customerList customerList_1 customerList_2 customerList_3">
+        <div class="container-fluid">
+            <div class="row1">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="purhead1 purhead1_1 purhead1_2 purhead1_3 purhead1_4 col-lg-5 col-sm-5">
+                        <h3><img class="img_icon" src="assets/img/audience1.png" alt="">Customers</h3>
+                    </div>
+                    <div class="purfil purfil1 col-lg-1 col-md-1 col-sm-1"></div>
+                    <div class="add_det_btn add_det_btn_1 add_det_btn_2 add_det_btn_4 col-lg-3 col-md-3 col-sm-3">
+                        <input type="text" (input)="search_event($event.target.value)" placeholder="Search" class="search_in search_in_1 search_in_2 search_in_4"><img class="search_icon search_icon_2" src="/assets/img/search.png">
+                    </div>
+                    <div class="add_det_btn add_det_btn_1 add_det_btn_2 add_det_btn_3 add_det_btn_4 col-lg-3 col-md-3 col-sm-3">
+                        <button (click)="onclick()" class="addnewpur addnewpur_1 addnewpur_2 addnewpur_3">ADD NEW CUSTOMER</button>
+                    </div>
+                </div>
+            </div>
+            <div class="main1">
+                <table class="table table-hover">
+                    <thead class="th_head">
+                        <tr>
+                            <th class="name name_1">Customer Name&nbsp;&nbsp;</th>
+                            <th class="custtype custtype_1">Customer Type</th>
+                            <th class="phone phone_1">Mobile Number</th>
+                            <th class="altphone altphone_1">Alternate Number 1</th>
+                            <th class="gstin gstin_1">GSTIN</th>
+                            <th class="address address_1">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tb_body">
+                        <tr *ngFor="let customer of Customer_List | paginate: { itemsPerPage: currentPageCount, currentPage: p1,id: 'one'}; let i=index">
+                            <td class="name1 name1_1"><a (click)="Cus_info(customer._id)">{{customer.name}}</a></td>
+                            <td class="custtype1 custtype1_1">
+                                <span class="cus_color" [style.background]="pickColor(customer.custtype)">{{customer.custtype}}</span>
+                            </td>
+                            <td class="phone1 phone1_1">{{customer.mobnumber}}</td>
+                            <td class="altphone1 altphone1_1 altphone1_2">{{customer.alternum1}}</td>
+                            <td class="gstin1 gstin1_1 gstin1_2">{{customer.gstin}}</td>
+                            <td class="address1 address1_1"><img class="img_icon1" (click)="editbtn(customer._id)" src="assets/img/edit.png" alt=""></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="pagination" *ngIf="Customer_List.length>10">
+                <pagination-controls  (pageChange)="p1 = $event" #api id="one">
+                </pagination-controls>
+            </div> -->
+            <div class="pagination" *ngIf="(Customer_List?.length!=0 && Customer_List?.length>=10) || (show_page == true)">
+                <span class="count_page" id="count_span">{{currentPageCount}}<i class="fa fa-angle-up" (click)="count_cal(1)"></i><i
+                        class="fa fa-angle-down" (click)="count_cal(2)"></i></span>
+                <button [disabled]="currentPage == 1" class="btn btn-default paginationbtn"
+                    (click)="paginatePartList('prev')"><i class="fa fa-angle-left"></i></button>
+
+                <ng-container *ngFor="let data of paginationCount; let i=index">
+                    <!-- <ng-container *ngIf="data<=3"> -->
+                    <span class="count_page add_pagecolor" *ngIf="pagecount == i"
+                        (click)="paginationClick(i+1)">{{data}}</span>
+                    <span class="count_page" *ngIf="pagecount != i" (click)="paginationClick(i)">{{data}}</span>
+                    <!-- </ng-container> -->
+                </ng-container>
+
+                <button [disabled]="currentPage == totalPages" class="btn btn-default paginationbtn"
+                    (click)="paginatePartList('next')"><i class="fa fa-angle-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

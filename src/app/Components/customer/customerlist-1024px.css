@@ -1,0 +1,119 @@
+@media screen and (max-width: 1024px) {
+    .customerList_2 {
+        width: 974px;
+        border-radius: 2px;
+        background-color: #FFFFFF;
+        animation: slide 20s infinite;
+    }
+    .search_in_2 {
+        box-sizing: border-box;
+        height: 40px;
+        width: 220px;
+        border: 0.7px solid #DFE5F9;
+        border-radius: 3px;
+        background-color: #FAFBFF;
+        display: inline-block;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        float: right;
+    }
+    .search_icon_2 {
+        display: inline-block;
+        position: relative;
+        right: 15px;
+        float: right;
+        bottom: 40px;
+        font-size: 20px;
+    }
+    .addnewpur_2 {
+        height: 40px;
+        width: 220px;
+        border-radius: 3px;
+        background-color: #F56C89;
+        color: #FFFFFF;
+        font-family: "Open Sans";
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 22px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border: none;
+        float: right;
+    }
+    .add_det_btn_2 {
+        padding: 0px 15px 0px 0px;
+        width: 25%;
+    }
+    .purhead1_2{
+        width: 39.666667%;
+    }
+    .altphone1_2 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 22px;
+        width: 14.666667%;
+        padding: 7px 10px 7px 0px;
+    }
+    .gstin1_2 {
+        color: rgba(0, 0, 0, 0.85);
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 22px;
+        width: 16.666667%;
+        padding: 7px 10px 7px 0px;
+    }
+    .sel_2 {
+        text-align: center;
+        padding: 7px 10px 7px 0px;
+    }
+    .container {
+        display: block;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 20px;
+    }
+    .container input {
+        position: relative;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+    .checkmark_2 {
+        position: absolute;
+        left: 47px;
+        height: 12px;
+        width: 12px;
+        background-color: #eee;
+        margin: 5px 0px 5px 0px;
+    }
+    .container:hover input~.checkmark_2 {
+        background-color: #ccc;
+    }
+    .container input:checked~.checkmark_2 {
+        background-color: #2196F3;
+    }
+    .checkmark_2:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+    .container input:checked~.checkmark_2:after {
+        display: block;
+    }
+    .container .checkmark_2:after {
+        left: 4px;
+        top: 1px;
+        width: 5px;
+        height: 9px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+}
+

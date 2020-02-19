@@ -1,0 +1,18 @@
+#notifyMsg{
+    position: fixed;
+    top: 4%;
+    right: 1%;
+    width: 100px;
+    z-index: 9999;
+    background: #808080ad;
+    max-width: 50vw;
+    width: 30vw;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
+}
+
+.notifySuccess{
+    background: green;
+}

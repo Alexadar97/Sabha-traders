@@ -1,0 +1,33 @@
+@media screen and (max-width: 768px) {
+    .newcustomer_1 {
+        width: 974px;
+        border-radius: 2px;
+        background-color: #FFFFFF;
+        /* height: 900px; */
+    }
+    .main1_1 {
+        padding: 0px;
+        margin-bottom: 20px;
+        margin-right: 200px;
+    }
+}
+@media screen and (max-width: 1366px) {
+    .newcustomer_3{
+        border-radius: 2px;
+    background-color: #FFFFFF;
+    padding: 0px 0px 765px 0px;
+    }
+    .conf_btn1 {
+        height: 40px;
+        width: 87px;
+        border-radius: 3px;
+        background-color: #F56C89;
+        color: #FFFFFF;
+        font-family: "Open Sans";
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22px;
+        margin: 35px 15px 0px 0px;
+        border: none;
+    }
+}

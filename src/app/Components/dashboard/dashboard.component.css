@@ -1,0 +1,685 @@
+.main {
+    animation: transitionIn 0.25s;
+}
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: rotateX(-10g);
+    }
+    to {
+        opacity: 0;
+        transform: rotateX(-10g);
+    }
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    background-color: #F3F6FE;
+}
+/* @media screen and (max-width: 1600px) { */
+.container {
+    width: 1655px;
+    padding: 0px 0px;
+    background-color: #F3F6FE;
+    /* height: 1255px; */
+    margin: 5px 15px;
+}
+
+.navbar {
+    height: 70px;
+    border-radius: 0px;
+    margin: 0px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06);
+    position: fixed;
+    left: 214px;
+    width: 1705px;
+    z-index: 999;
+    border: none;
+}
+
+.navbar-header {
+    float: right;
+    color: #000000;
+    font-family: "Open Sans";
+    font-size: 15px;
+    line-height: 20px;
+    margin: 15px 0px 0px 0px;
+}
+
+.logout {
+    border: none;
+    background: none;
+    padding: 10px 10px 10px 10px;
+    margin: 0px 25px 0px 0px;
+}
+
+.logout:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.img_icon1 {
+    width: 22px;
+    margin-left: 7px;
+}
+
+.sidenav {
+    height: 1124px;
+    width: 213px;
+    position: fixed;
+    z-index: 1;
+    /* top: 52px; */
+    left: 0;
+    background-color: #037AC0;
+    overflow-x: hidden;
+    padding-top: 0px;
+}
+
+.sidenav h4 {
+    height: 23px;
+    color: #FFFFFF;
+    font-family: "Open Sans";
+    font-size: 23px;
+    font-weight: 800;
+    line-height: 23px;
+    text-align: center;
+    margin: 30px 0px 35px 0px;
+}
+
+.sidenav button {
+    padding: 10px 49px 10px 25px;
+    display: block;
+    background: transparent;
+    color: #FFFFFF;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    border: none;
+}
+
+.sidenav button:hover {
+    background-color: rgba(0, 0, 0, 0.44);
+    border-left: 1.5px solid #16D082;
+}
+
+.sidenav button.active {
+    background-color: rgba(0, 0, 0, 0.44);
+    border-left: 1.5px solid #16D082;
+}
+
+.img_icon {
+    width: 22px;
+    margin-right: 15px;
+}
+
+.button1 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    padding: 0px 6px 0px 0px;
+}
+
+.button1 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 115px;
+    transition: 0.5s;
+}
+
+.button1:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.button2 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    padding: 0px 22px 0px 0px;
+}
+
+.button2 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 115px;
+    transition: 0.5s;
+}
+
+.button2:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.button3 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    padding: 0px 40px 0px 0px;
+}
+
+.button3 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 115px;
+    transition: 0.5s;
+}
+
+.button3:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.button4 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    padding: 0px 17px 0px 0px;
+}
+
+.button4 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 115px;
+    transition: 0.5s;
+}
+
+.button4:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.button5 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    padding: 0px 6px 0px 0px;
+}
+
+.button5 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 115px;
+    transition: 0.5s;
+}
+
+.button5:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.button6 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    padding: 0px 9px 0px 0px;
+}
+
+.button6 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 115px;
+    transition: 0.5s;
+}
+
+.button6:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.button7 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    padding: 0px 25px 0px 0px;
+}
+
+.button7 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 115px;
+    transition: 0.5s;
+}
+
+.button7:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.button8 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    padding: 0px 21px 0px 0px;
+}
+
+.button8 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 115px;
+    transition: 0.5s;
+}
+
+.button8:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.button9 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    padding: 0px 52px 0px 0px;
+}
+
+.button9 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 115px;
+    transition: 0.5s;
+}
+
+.button9:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.main {
+    padding: 15px 0px 0px 20px;
+    position: relative;
+    top: 70px;
+    background-color: #F3F6FE;
+    margin: 0px 0px 0px 202px;
+    /* width: 84.5%; */
+}
+
+.fas {
+    margin-right: 15px;
+}
+
+.fash {
+    margin-right: 10px;
+}
+/* } */
+
+@media screen and (max-width: 1600px) {
+    .container {
+        width: 1336px;
+        padding: 0px 0px;
+        background-color: #F3F6FE;
+        margin: 5px 15px;
+    }
+    
+    .navbar2 {
+        height: 70px;
+        border-radius: 0px;
+        margin: 0px;
+        background-color: #FFFFFF;
+        box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06);
+        position: fixed;
+        left: 214px;
+        width: 1385px;
+        z-index: 999;
+        border: none;
+    }
+    
+    .navbar-header2 {
+        float: right;
+        color: #000000;
+        font-family: "Open Sans";
+        font-size: 15px;
+        line-height: 20px;
+        margin: 15px 0px 0px 0px;
+    }
+    
+    .logout1 {
+        border: none;
+        background: none;
+        padding: 10px 10px 10px 10px;
+        margin: 0px 25px 0px 0px;
+    }
+    
+    .logout1:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    .img_icon2 {
+        width: 22px;
+        margin-left: 7px;
+    }
+    .main4 {
+        padding: 15px 0px 0px 20px;
+        position: relative;
+        top: 70px;
+        background-color: #F3F6FE;
+        margin: 0px 0px 0px 195px;
+      
+    }
+    /* .sidenav1 {
+        height: 1124px;
+        width: 213px;
+        position: fixed;
+        z-index: 1;
+      
+        left: 0;
+        background-color: #037AC0;
+        overflow-x: hidden;
+        padding-top: 0px;
+    }
+    
+    .sidenav1 h4 {
+        height: 23px;
+        color: #FFFFFF;
+        font-family: "Open Sans";
+        font-size: 23px;
+        font-weight: 800;
+        line-height: 23px;
+        text-align: center;
+        margin: 30px 0px 35px 0px;
+    }
+    
+    .sidenav1 button {
+        padding: 10px 49px 10px 25px;
+        display: block;
+        background: transparent;
+        color: #FFFFFF;
+        font-family: "Open Sans";
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 22px;
+        border: none;
+    }
+    
+    .sidenav1 button:hover {
+        background-color: rgba(0, 0, 0, 0.44);
+        border-left: 1.5px solid #16D082;
+    }
+    
+    .sidenav1 button.active {
+        background-color: rgba(0, 0, 0, 0.44);
+        border-left: 1.5px solid #16D082;
+    }
+    
+    .img_icon {
+        width: 22px;
+        margin-right: 15px;
+    }
+    
+    .button_1 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        padding: 0px 6px 0px 0px;
+    }
+    
+    .button_1 span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 115px;
+        transition: 0.5s;
+    }
+    
+    .button_1:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+    .button_2 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        padding: 0px 22px 0px 0px;
+    }
+    
+    .button_2 span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 115px;
+        transition: 0.5s;
+    }
+    
+    .button_2:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+    .button_3 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        padding: 0px 40px 0px 0px;
+    }
+    
+    .button_3 span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 115px;
+        transition: 0.5s;
+    }
+    
+    .button_3:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+    .button_4 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        padding: 0px 17px 0px 0px;
+    }
+    
+    .button_4 span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 115px;
+        transition: 0.5s;
+    }
+    
+    .button_4:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+    .button_5 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        padding: 0px 6px 0px 0px;
+    }
+    
+    .button_5 span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 115px;
+        transition: 0.5s;
+    }
+    
+    .button_5:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+    .button_6 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        padding: 0px 9px 0px 0px;
+    }
+    
+    .button_6 span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 115px;
+        transition: 0.5s;
+    }
+    
+    .button_6:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+    .button_7 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        padding: 0px 25px 0px 0px;
+    }
+    
+    .button_7 span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 115px;
+        transition: 0.5s;
+    }
+    
+    .button_7:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+    .button_8 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        padding: 0px 21px 0px 0px;
+    }
+    
+    .button_8 span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 115px;
+        transition: 0.5s;
+    }
+    
+    .button_8:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+    .button_9 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        padding: 0px 52px 0px 0px;
+    }
+    
+    .button_9 span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 115px;
+        transition: 0.5s;
+    }
+    
+    .button_9:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+    .main4 {
+        padding: 15px 0px 0px 20px;
+        position: relative;
+        top: 70px;
+        background-color: #F3F6FE;
+        margin: 0px 0px 0px 202px;
+      
+    } */
+    }
+    
+@media screen and (max-width: 1366px) {
+    .container3 {
+        padding: 0px 0px;
+        width: 1090px;
+    }
+    .main3 {
+        padding: 15px 0px 0px 20px;
+        position: relative;
+        top: 70px;
+        background-color: #F3F6FE;
+        margin: 0px 0px 0px 201px;
+        /* width: 1085px; */
+    }
+    .navbar1 {
+        height: 70px;
+        border-radius: 0px;
+        margin: 0px;
+        background-color: #FFFFFF;
+        box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06);
+        position: fixed;
+        left: 214px;
+        width: 84%;
+        z-index: 999;
+        border: none;
+    }
+    .navbar-header1 {
+        float: right;
+        color: #000000;
+        font-family: "Open Sans";
+        font-size: 15px;
+        line-height: 20px;
+        margin: 15px 0px 0px 0px;
+    }
+    .logout {
+        border: none;
+        background: none;
+    }
+    .img_icon1 {
+        width: 22px;
+        margin-left: 7px;
+    }
+}

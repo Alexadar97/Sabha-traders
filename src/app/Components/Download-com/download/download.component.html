@@ -1,0 +1,393 @@
+<div class="main main1_1 main1_2">
+    <div class="download download_1 download_2 download_3">
+        <div class="container-fluid">
+            <div class="row1">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="purhead_1 col-lg-5 col-sm-5">
+                        <h3><img class="img_icon" src="assets/img/download1.png" alt="">Downloads</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="main1">
+                <div class="down col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <a class="down1 down1_1 down1_2 down1_3 col-lg-3 col-md-3 col-sm-3 col-xs-3" (click)="onsales()"
+                        data-toggle="modal">
+                        <img class="img1 img1_1 img1_2 img1_3" src="/assets/img/report.png">
+                        <p>Sales Report</p>
+                    </a>
+                    <a class="down2 down2_1 down2_2 down2_3 down2_4 col-lg-3 col-md-3 col-sm-3 col-xs-3"
+                        data-toggle="modal" (click)="onpurchase()">
+                        <img class="img1 img1_1 img1_2 img1_3" src="/assets/img/Group 2.png">
+
+                        <p>Purchase Report</p>
+                    </a>
+                    <a class="down1 down1_1 down1_2 down1_3 col-lg-3 col-md-3 col-sm-3 col-xs-3" data-toggle="modal"
+                        (click)="onpayment()">
+                        <img class="img1 img1_1 img1_2 img1_3" src="/assets/img/pur1.png">
+                        <p>Payment Report</p>
+                    </a>
+                </div>
+            </div>
+            <!-- model start -->
+            <div id="sales-report" class="modal fade right">
+                <div class="modal-dialog1 modal-dialog1_1 modal-dialog1_2 modal-dialog1_3">
+                    <div class="modal-content1 modal-content1_1 modal-content1_2 modal-content1_3">
+                        <div class="modal-body1">
+                            <div class="head">
+                                <button type="button" class="close" data-dismiss="modal">&times;<span
+                                        class="sr-only">Close</span></button>
+                                <h5 class="modal-title">Sales Report</h5>
+                            </div>
+                            <div class="body1">
+                                <div class="container1">
+                                    <form class="form-horizontal" [formGroup]="Salesreport">
+                                        <div class="form_body">
+                                            <div class="contant">
+                                                <div class="col-sm-6">
+                                                    <span class="pur_lbl">From</span><br>
+                                                    <div class="pur_input">
+                                                        <input type="text" formControlName="fromDate"
+                                                            placeholder="DD-MM-YYYY" class="form-control"
+                                                            autocomplete="off" bsDatepicker
+                                                            [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY' }"
+                                                            id="fromDate1">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <span class="pur_lbl">To</span><br>
+                                                    <div class="pur_input">
+                                                        <input type="text" formControlName="toDate"
+                                                            formControlName="fromDate" placeholder="DD-MM-YYYY"
+                                                            class="form-control" autocomplete="off" bsDatepicker
+                                                            [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY' }"
+                                                            id="toDate1">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <span class="pur_lbl">Select Format</span><br>
+                                                    <div class="pur_input">
+                                                        <button name="pdf" id="btn-one" (click)="salesformet(1)"
+                                                            value="pdf" class="btn pdf"><img class="img2"
+                                                                src="/assets/img/Group 16.png"></button>
+                                                        <button name="xls" id="btn-two" (click)="salesformet(2)"
+                                                            value="xls" class="btn xls"><img class="img2"
+                                                                src="/assets/img/Group 11.png"></button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <span class="pur_lbl"></span><br>
+                                                    <div class="pur_input">
+                                                        <div class="comp_report">
+                                                            <input type="checkbox" class="chk" id="checked1"
+                                                                checked="checked"
+                                                                (click)="checksales($event.target.checked)">Complete
+                                                            Report
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12" *ngIf="sel_cus == 'sel_cus'">
+                                                    <span class="pur_lbl">Select Customer</span><br>
+                                                    <div class="pur_input">
+                                                        <input type="text" formControlName="custid"
+                                                            onkeypress="return omit_special_char(event)"
+                                                            (input)="search_sales($event.target.value)"
+                                                            autocomplete="off" id="servidcd1"
+                                                            placeholder="Search & select the name"
+                                                            class="search_in search_in_1 search_in_2">
+                                                        <select id="custname" class="select" style="position: absolute;z-index: 2000;display: none;    height: 60px;
+                                                            left: 15px;
+                                                            right: 13px;
+                                                            top: 82px;
+                                                            width: 300px;" id="selectioncd1" class="form-control"
+                                                            size="5" (change)="Changeselectcd1($event.target.value)">
+                                                            <ng-container *ngFor="let list of cus_name; let i=index">
+                                                                <option value={{list?._id}}>
+                                                                    {{list?.name}}-{{list?.mobnumber}}</option>
+                                                            </ng-container>
+
+                                                        </select>
+                                                        <img class="search_icon" src="/assets/img/search.png">
+                                                    </div>
+                                                </div>
+                                                <div class="main2 main2_1">
+                                                    <div class="conform">
+                                                        <button class="conf_btn" *ngIf="progressing==false"
+                                                            (click)="sales_generate()">Generate Report</button>
+                                                        <button class="conf_btn1" *ngIf="progressing==true"
+                                                            style="opacity: .5;" disabled>Generate Report</button>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <div class="progress progress_1 progress_2 progress_3 col-sm-8">
+                                                            <div class="progress-bar progress-bar-striped active"
+                                                                role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                                                aria-valuemax="100" [style.width.%]="value">
+                                                                {{value}}%
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="down">
+                                                        <button class="down_btn"
+                                                            (click)="downlaod_report('Sales_Report'+format)"
+                                                            *ngIf="progressing==false"><img class="img_icon1"
+                                                                src="assets/img/download.png"
+                                                                alt=""><span>Downloads</span></button>
+                                                        <button class="down_btn1" *ngIf="progressing==true"><img
+                                                                class="img_icon1" style="opacity: .5;"
+                                                                src="assets/img/download.png" alt=""
+                                                                disabled><span>Downloads</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- model end -->
+            <!-- Purchase Report id="purchase-report" -->
+            <!-- model start -->
+            <div id="purchase-report" class="modal fade right">
+                <div class="modal-dialog1 modal-dialog1_1 modal-dialog1_2 modal-dialog1_3">
+                    <div class="modal-content1 modal-content1_1 modal-content1_2 modal-content1_3">
+                        <div class="modal-body1">
+                            <div class="head">
+                                <button type="button" class="close" data-dismiss="modal">&times;<span
+                                        class="sr-only">Close</span></button>
+                                <h5 class="modal-title">Purchase Report</h5>
+                            </div>
+                            <div class="body1">
+                                <div class="container1">
+                                    <form class="form-horizontal" [formGroup]="Purchasereport">
+                                        <div class="form_body">
+                                            <div class="contant">
+                                                <div class="col-sm-6">
+                                                    <span class="pur_lbl">From</span><br>
+                                                    <div class="pur_input">
+                                                        <input type="text" formControlName="fromDate"
+                                                            placeholder="DD-MM-YYYY" class="form-control"
+                                                            autocomplete="off" bsDatepicker
+                                                            [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY' }"
+                                                            id="fromDate2">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <span class="pur_lbl">To</span><br>
+                                                    <div class="pur_input">
+                                                        <input type="text" formControlName="toDate"
+                                                            formControlName="fromDate" placeholder="DD-MM-YYYY"
+                                                            class="form-control" autocomplete="off" bsDatepicker
+                                                            [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY' }"
+                                                            id="toDate2">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <span class="pur_lbl">Select Format</span><br>
+                                                    <div class="pur_input">
+                                                        <button name="pdf" id="btn-one1" (click)="purchaseformet(1)"
+                                                            value="pdf" class="btn1 pdf"><img class="img2"
+                                                                src="/assets/img/Group 16.png"></button>
+                                                        <button name="xls" id="btn-two1" (click)="purchaseformet(2)"
+                                                            value="xls" class="btn1 xls"><img class="img2"
+                                                                src="/assets/img/Group 11.png"></button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <span class="pur_lbl"></span><br>
+                                                    <div class="pur_input">
+                                                        <div class="comp_report">
+                                                            <input type="checkbox" id="checked2" class="chk"
+                                                                checked="checked"
+                                                                (click)="checkpurchase($event.target.checked)">Complete
+                                                            Report
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12" *ngIf="sel_cus == 'sel_cus'">
+                                                    <span class="pur_lbl">Select Customer</span><br>
+                                                    <div class="pur_input">
+                                                        <input type="text" id='servidcd2' formControlName="custid"
+                                                            onkeypress="return omit_special_char(event)"
+                                                            (input)="search_purchase($event.target.value)"
+                                                            autocomplete="off" placeholder="Search & select the name"
+                                                            class="search_in search_in_1 search_in_2">
+                                                        <select class="select" style="position: absolute;z-index: 2000;display: none;    height: 60px;
+                                    left: 15px;
+                                    right: 13px;
+                                    top: 82px;
+                                    width: 300px;" id="selectioncd2" class="form-control" size="5"
+                                                            (change)="Changeselectcd2($event.target.value)">
+                                                            <ng-container *ngFor="let list of cus_name; let i=index">
+                                                                <option value={{list?._id}}>
+                                                                    {{list?.name}}-{{list?.mobnumber}}</option>
+                                                            </ng-container>
+
+                                                        </select>
+                                                        <img class="search_icon" src="/assets/img/search.png">
+                                                    </div>
+                                                </div>
+                                                <div class="main2 main2_1">
+                                                    <div class="conform">
+                                                        <button class="conf_btn" *ngIf="progressing==false"
+                                                            (click)="purchase_report()">Generate Report</button>
+                                                        <button class="conf_btn1" *ngIf="progressing==true"
+                                                            style="opacity: .5;" disabled>Generate Report</button>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <div class="progress progress_1 progress_2 progress_3 col-sm-8">
+                                                            <div class="progress-bar progress-bar-striped active"
+                                                                role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                                                aria-valuemax="100" [style.width.%]="value">
+                                                                {{value}}%
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="down">
+                                                        <button class="down_btn"
+                                                            (click)="downlaod_report('Purchase_Report'+format)"
+                                                            *ngIf="progressing==false"><img class="img_icon1"
+                                                                src="assets/img/download.png"
+                                                                alt=""><span>Downloads</span></button>
+                                                        <button class="down_btn1" *ngIf="progressing==true"><img
+                                                                class="img_icon1" style="opacity: .5;"
+                                                                src="assets/img/download.png" alt=""
+                                                                disabled><span>Downloads</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- model end -->
+            <!-- Payment Report id="payment-report" -->
+            <!-- model start -->
+            <div id="payment-report" class="modal fade right">
+                <div class="modal-dialog1 modal-dialog1_1 modal-dialog1_2 modal-dialog1_3">
+                    <div class="modal-content1 modal-content1_1 modal-content1_2 modal-content1_3">
+                        <div class="modal-body1">
+                            <div class="head">
+                                <button type="button" class="close" data-dismiss="modal">&times;<span
+                                        class="sr-only">Close</span></button>
+                                <h5 class="modal-title">Payment Report</h5>
+                            </div>
+                            <div class="body1">
+                                <div class="container1">
+                                    <form class="form-horizontal" [formGroup]="Paymentreport">
+                                        <div class="form_body">
+                                            <div class="contant">
+                                                <div class="col-sm-6">
+                                                    <span class="pur_lbl">From</span><br>
+                                                    <div class="pur_input">
+                                                        <input type="text" formControlName="fromDate"
+                                                            placeholder="DD-MM-YYYY" class="form-control"
+                                                            autocomplete="off" bsDatepicker
+                                                            [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY' }"
+                                                            id="fromDate3">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <span class="pur_lbl">To</span><br>
+                                                    <div class="pur_input">
+                                                        <input type="text" formControlName="toDate"
+                                                            formControlName="fromDate" placeholder="DD-MM-YYYY"
+                                                            class="form-control" autocomplete="off" bsDatepicker
+                                                            [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY' }"
+                                                            id="toDate3">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6" id="myDIV">
+                                                    <span class="pur_lbl">Select Format</span><br>
+                                                    <div class="pur_input">
+                                                        <button name="pdf" id="btn-one2" (click)="paymentformet(1)"
+                                                            value="pdf" class="btn2 pdf"><img class="img2"
+                                                                src="/assets/img/Group 16.png"></button>
+                                                        <button name="xls" id="btn-two2" (click)="paymentformet(2)"
+                                                            value="xls" class="btn2 xls"><img class="img2"
+                                                                src="/assets/img/Group 11.png"></button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <span class="pur_lbl"></span><br>
+                                                    <div class="pur_input">
+                                                        <div class="comp_report">
+                                                            <input type="checkbox" id="checked3" class="chk"
+                                                                checked="checked"
+                                                                (click)="checkpayment($event.target.checked)">Complete
+                                                            Report
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12" *ngIf="sel_cus == 'sel_cus'">
+                                                    <span class="pur_lbl">Select Customer</span><br>
+                                                    <div class="pur_input">
+                                                        <input type="text" formControlName="custid"
+                                                            onkeypress="return omit_special_char(event)"
+                                                            (input)="search_payment($event.target.value)"
+                                                            autocomplete="off" id="servidcd3"
+                                                            placeholder="Search & select the name"
+                                                            class="search_in search_in_1 search_in_2">
+                                                        <select class="select" style="position: absolute;z-index: 2000;display: none;    height: 60px;
+                                                            left: 15px;
+                                                            right: 13px;
+                                                            top: 82px;
+                                                            width: 300px;" id="selectioncd3" class="form-control"
+                                                            size="5" (change)="Changeselectcd3($event.target.value)">
+                                                            <ng-container *ngFor="let list of cus_name; let i=index">
+                                                                <option value={{list?._id}}>
+                                                                    {{list?.name}}-{{list?.mobnumber}}</option>
+                                                            </ng-container>
+
+                                                        </select>
+                                                        <img class="search_icon" src="/assets/img/search.png">
+                                                    </div>
+                                                </div>
+                                                <div class="main2 main2_1">
+                                                    <div class="conform">
+                                                        <button class="conf_btn" *ngIf="progressing==false"
+                                                            (click)="payment_report()">Generate Report</button>
+                                                        <button class="conf_btn1" *ngIf="progressing==true"
+                                                            style="opacity: .5;" disabled>Generate Report</button>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <div class="progress progress_1 progress_2 progress_3 col-sm-8">
+                                                            <div class="progress-bar progress-bar-striped active"
+                                                                role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                                                aria-valuemax="100" [style.width.%]="value">
+                                                                {{value}}%
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="down">
+                                                        <button class="down_btn"
+                                                            (click)="downlaod_report('Payment_Report'+format)"
+                                                            *ngIf="progressing==false"><img class="img_icon1"
+                                                                src="assets/img/download.png"
+                                                                alt=""><span>Downloads</span></button>
+                                                        <button class="down_btn1" *ngIf="progressing==true"
+                                                            disabled><img class="img_icon1" style="opacity: .5;"
+                                                                src="assets/img/download.png"
+                                                                alt=""><span>Downloads</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- model end -->
+
+        </div>
+    </div>
+</div>

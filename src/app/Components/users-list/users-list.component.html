@@ -1,0 +1,196 @@
+<div class="main">
+  <div class="customerList customerList_1 customerList_2">
+      <div class="container-fluid">
+          <div class="row1">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="purhead1 purhead1_1 purhead1_2 purhead1_3 col-lg-5 col-sm-5">
+                      <h3><img class="img_icon" src="assets/img/audience1.png" alt="">Users</h3>
+                  </div>
+                  <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                  <div class="add_det_btn add_det_btn_1 add_det_btn_2 col-lg-3 col-md-3 col-sm-3">
+                    <input type="text" (input)="search_event($event.target.value)" placeholder="Search" class="search_in search_in_1 search_in_2 search_in_3"><img class="search_icon search_icon_1 search_icon_2 search_icon_3" src="/assets/img/search.png">                      
+                  </div>
+                  <div class="add_det_btn add_det_btn_1 add_det_btn_2 add_det_btn_3 col-lg-3 col-md-3 col-sm-3">
+                      <button (click)="onclick()" class="addnewpur addnewpur_1 addnewpur_2">ADD USER</button>
+                  </div>
+              </div>
+          </div>
+            <!-- Modal HTML -->
+            <div id="myModal" class="modal fade in">
+              <div class="modal-dialog1 modal-dialog_1 modal-dialog1_1">
+                  <div class="modal-content1 modal-content_1">
+                      <div class="head">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title">Add New User</h4>
+                      </div>
+                      <div class="body1">
+                          <div class="container1">
+                              <form [formGroup]="Newuser" class="form-horizontal">
+                                  <div class="form_body">
+                                      <div class="contant">
+                                          <div class="col-sm-12">
+                                              <span class="pur_lbl">User Name</span><span class="imp">*</span><br>
+                                              <div class="pur_input">
+                                                  <input formControlName="username" maxlength="40" onkeypress="return omit_special_char(event)" type="text" class="form-control" placeholder="" required>                                                    
+                                                  <div *ngIf="uname.invalid && uname.touched">
+                                                      <small *ngIf="uname.errors?.required" class="text-danger">Please enter user name</small>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                            <span class="pur_lbl">User Type</span><span class="imp">*</span><br>
+                                            <div class="pur_input">
+                                              <select formControlName="type" id="custtype" (change)="checkbox($event.target.value)" type="text" class="form-control" placeholder="" required>
+                                                  <option selected disabled>Select User Type</option>
+                                                 
+                                                  <ng-container  *ngIf="admin == 1" >
+                                                      <option value="Admin" disabled>Admin</option>
+                                                  </ng-container>
+                                                  <ng-container  *ngIf="admin == 0">
+                                                      <option value="Admin">Admin</option>
+                                                  </ng-container>
+                                                  <option value="User">User</option>                                                                                                                             
+                                              </select>                               
+                                              <div *ngIf="custype.invalid && custype.touched">
+                                                  <small *ngIf="custype.errors?.required" class="text-danger">Please select user type</small>
+                                              </div>
+                                          </div>  
+                                        </div>
+                                          <div class="col-sm-12" *ngIf="search == 'search'">
+                                              <span class="pur_lbl">Branch</span><span class="imp">*</span><br>
+
+                                              <div class="pur_input">
+                                                <input formControlName="branchid" (input)="search_brenchtype($event.target.value)" *ngIf="modelbtn1=='emailshow'"
+                                                id="branchname" placeholder="Search & select the customer name" autocomplete="off" class="form-control" />
+                                                <input formControlName="branchid" (input)="search_brenchtype($event.target.value)" *ngIf="modelbtn1=='emailhide'" disabled
+                                                id="branchname" placeholder="Search & select the customer name" autocomplete="off" class="form-control" />
+                                                <select style="position: absolute;z-index: 2000;display: none;    height: 60px;
+                                                left: 15px;
+                                                right: 13px;
+                                                top: 55px;
+                                                width: 307px;" id="selectbranch" class="form-control" size="5" (change)="Changeselectcd5($event.target.value)">
+                                                    <ng-container *ngFor="let list of branch_name; let i=index">
+                                                        <option value={{list?._id}}>{{list?.branchname}}</option>
+                                                    </ng-container>
+                                                </select>
+                                                <span *ngIf="case_error =='case_error'" class="text-danger">No Data</span>
+                                                <ng-container *ngIf="branch.invalid && branch.touched">
+                                                    <small *ngIf="branch.errors?.required" class="text-danger">Please select
+                                                        customer type</small>
+                                                </ng-container>
+                                              </div>
+                                          </div>
+                                          
+                                          <div class="col-sm-12" id="branch_mail">
+                                            <span class="pur_lbl">Email</span><span class="imp">*</span><br>
+                                            <div class="pur_input">
+                                                <input formControlName="email" type="text" class="form-control"  required>                                                   
+                                                <div *ngIf="email.invalid && email.touched">
+                                                    <small *ngIf="email.errors?.required" class="text-danger">Please enter mail id</small>
+                                                    <small *ngIf="email.errors?.email" class="text-danger">Please enter vaild email id</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                          
+                                          <div class="col-sm-12">
+                                              <span class="pur_lbl">Password</span><span class="imp">*</span><br>
+                                              <div class="pur_input">
+                                                <input formControlName="password" [type]="show_button1 ? 'text' : 'password'" placeholder="" class="form-control" (change)="password($event.target.value)"/>
+                                                <!-- <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
+                                                <span class="icu"><i [class]="show_eye1 ? 'fa fa-eye' : 'fa fa-eye-slash'" (click)="showPassword1()"></i></span>
+                                                  <div *ngIf="pwd.invalid && pwd.touched">
+                                                      <small *ngIf="pwd.errors?.required" class="text-danger">Please enter password</small>
+                                                  </div>
+                                                  <small *ngIf="pass_error =='pass_error'" class="text-danger">Password is invalid (First letter caps & Minimam 8 characters & Minimam one number field needed &  .  value can not accepted & '@' symbol mandatory)</small>
+                                              </div>
+                                          </div>
+                                          <div class="main2 main2_1">
+                                              <div class="conform">
+                                                  <button class="conf_btn" (click)="submit_user()" *ngIf="modelbtn=='add'">SAVE</button>
+                                              </div>
+                                              <div class="conform">
+                                                  <button class="conf_btn" (click)="Update_user()" *ngIf="modelbtn=='edit'" >UPDATE</button>
+                                              </div>
+                                              <div class="cancel">
+                                                  <button class="cenc_btn" (click)="cancel()" >CANCEL</button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="main1">
+            <table class="table table-hover">
+                <thead class="th_head">
+                    <tr>
+                        <!-- <input type="number"> -->
+                        <th class="name name_1">User Name&nbsp;&nbsp;</th>
+                        <th class="hsncode hsncode_1">Branch</th>
+                        <th class="purchaselist purchaselist_1">User Type</th>
+                        <th class="salesrate salesrate_1">Password</th>
+                        <th class="action action_1">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="tb_body">
+                    <tr *ngFor="let user of User_List | paginate: { itemsPerPage: currentPageCount, currentPage: p1,id: 'one'}; let i=index">
+                        <td class="name1 name1_1">{{user.username}}</td>
+                        <td class="hsncode1 hsncode1_1" *ngIf="user?.branch == null">-</td>
+                        <td class="hsncode1 hsncode1_1" *ngIf="user?.branch != null">{{(user?.branch.branchname !="") ? user?.branch.branchname : '-'}}</td>
+                        <td class="purchaselist1 purchaselist1_1 purchaselist1_1">{{user.type}}</td>
+                        <td class="salesrate1 salesrate1_1 salesrate1_2">
+                            <ng-container *ngIf='show_button != i'>
+                                <input type="text" class="" value=".........." readonly/>
+                            </ng-container>
+                            <ng-container *ngIf='show_button == i'>
+                                <input type="text" class="" value="{{user.password}}" readonly/>
+                            </ng-container>
+                            <!-- <input id="pass_log_id" type="password" (click)="show_pass()" name="pass" value="{{user.password}}" readonly style="border: none;"> 
+                            <span toggle="#password-field" class="ica fa fa-fw fa-eye field_icon toggle-password"></span> -->
+                            
+                            <!-- <input type="password" id="password" value="{{user.password}}" >
+                            <button onclick="if (password.type == 'text') password.type = 'password';
+                            else password.type = 'text';">toggle</button> -->
+                            <span><i *ngIf="show_button == i" class="fa fa-eye" (click)="showPassword(i)" style="cursor: pointer;"></i></span>
+                            <span><i *ngIf="show_button != i" class="fa fa-eye-slash" (click)="showPassword(i)" style="cursor: pointer;"></i></span>
+                        </td>
+                        <td class="action1 action1_1"><img class="img_icon1" (click)="edit_user(user._id)" src="assets/img/edit.png" alt="">
+                           </td>
+                           <!-- <img class="img_icon1"  src="assets/img/trash.png" alt=""> -->
+                       
+                    </tr>
+                    <!-- (click)="delect_user(user._id)" -->
+                    <!-- [attr.id]="product.id" -->         
+                    <!-- <a class="iconbtn"></a>               -->
+                    <!-- (click)="deleteRow(product.id)" -->
+                </tbody>
+            </table>
+        </div>
+        <!-- <div class="pagination"  *ngIf="User_List.length>10">
+            <pagination-controls  (pageChange)="p1 = $event" #api id="one">
+            </pagination-controls>
+            
+        </div> -->
+        <div class="pagination" *ngIf="(User_List?.length!=0 && User_List?.length>=10) || (show_page == true)">
+            <span class="count_page" id="count_span">{{currentPageCount}}<i class="fa fa-angle-up" (click)="count_cal(1)"></i><i
+                    class="fa fa-angle-down" (click)="count_cal(2)"></i></span>
+            <button [disabled]="currentPage == 1" class="btn btn-default paginationbtn"
+                (click)="paginatePartList('prev')"><i class="fa fa-angle-left"></i></button>
+
+            <ng-container *ngFor="let data of paginationCount; let i=index">
+                <!-- <ng-container *ngIf="data<=3"> -->
+                <span class="count_page add_pagecolor" *ngIf="pagecount == i"
+                    (click)="paginationClick(i+1)">{{data}}</span>
+                <span class="count_page" *ngIf="pagecount != i" (click)="paginationClick(i)">{{data}}</span>
+                <!-- </ng-container> -->
+            </ng-container>
+
+            <button [disabled]="currentPage == totalPages" class="btn btn-default paginationbtn"
+                (click)="paginatePartList('next')"><i class="fa fa-angle-right"></i></button>
+        </div>
+      </div>
+  </div>
+</div>

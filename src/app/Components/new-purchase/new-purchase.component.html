@@ -1,0 +1,284 @@
+<div class="main">
+    <div class="Newpurchase Newpurchase_1 Newpurchase_2">
+        <div class="container-fluid">
+            <div class="row1">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="purhead1 col-lg-5 col-md-5 col-sm-5">
+                        <h3><img class="img_icon" src="assets/img/product1.png" alt="">New Purchase</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container1">
+            <form [formGroup]="Newpurchase" class="form-horizontal">
+                <div class="form_body">
+                    <div class="header">
+                        <div class="mod-head mod-head_1 mod-head_2">
+                            <h4>Purchase info</h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="pur contant">
+                        <div class="col-sm-6">
+                            <div *ngIf="usertype == 'User'">
+                            <span class="pur_lbl">Invoice Number</span><span class="imp">*</span><br>
+                                <div class="pur_input">
+                                <input formControlName="invoicenum" id="txtEmpName" maxlength="20" onkeypress="return omit_special_char(event)" type="text" class="form-control" required/>
+                                <ng-container *ngIf="invoicenum.invalid && invoicenum.touched">
+                                    <small *ngIf="invoicenum.errors?.required" class="text-danger">Please enter invoice number</small>
+                                </ng-container>
+                                </div>
+                            </div>
+                            <div class="bra1 col-sm-6" *ngIf="usertype == 'Admin'">
+                             <span class="pur_lbl">Invoice Number</span><span class="imp">*</span><br>
+                                <div class="pur_input">
+                                <input formControlName="invoicenum" id="txtEmpName" maxlength="20" onkeypress="return omit_special_char(event)" type="text" class="form-control" required/>
+                                <ng-container *ngIf="invoicenum.invalid && invoicenum.touched">
+                                    <small *ngIf="invoicenum.errors?.required" class="text-danger">Please enter invoice number</small>
+                                </ng-container>
+                                </div>
+                            </div>
+                            <div class="bra2 col-sm-6" *ngIf="usertype == 'Admin'">
+                            <span class="pur_lbl">Branch Name</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="branchid" (input)="search_brenchtype($event.target.value)" 
+                                id="servidcd2" placeholder="Search & select the customer name" autocomplete="off" class="form-control" />
+                                <select style="position: absolute;z-index: 2000;display: none;    height: 60px;
+                                left: 0px;
+                                right: 13px;
+                                top: 55px;
+                                width: 301px;" id="selectioncd2" class="form-control" size="5" (change)="Changeselectcd5($event.target.value)">
+                                    <ng-container *ngFor="let list of branch_name; let i=index">
+                                        <option value={{list?._id}}>{{list?.branchname}}</option>
+                                    </ng-container>
+                                </select>
+                                <ng-container><small *ngIf="case_error =='case_error1'" class="text-danger">No Data</small></ng-container>
+                                
+                                <ng-container *ngIf="branch.invalid && branch.touched">
+                                    <small *ngIf="branch.errors?.required" class="text-danger">Please select
+                                        customer type</small>
+                                </ng-container>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <span class="pur_lbl">Date</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input type="text" formControlName="date" placeholder="DD-MM-YYYY" class="form-control" autocomplete="off" bsDatepicker [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY' }" id="Date">
+                                     
+                                <!-- [minDate]="today"-->
+                                <!-- <input formControlName="date" type="text" [(ngModel)]="today" placeholder="DD-MM-YYYY" class="form-control"
+                                bsDatepicker  [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY',dateOutputFormat: 'DD-MM-YYYY' }"/>-->
+                                <div *ngIf="date.invalid && date.touched">
+                                    <small *ngIf="date.errors?.required" class="text-danger">Please enter date</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header">
+                        <div class="mod-head mod-head_1 mod-head_2">
+                            <h4>Supplier Details</h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="contant">
+                        <div class="purinfo col-sm-6">
+                            <span class="pur_lbl">Supplier Name</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="suppname" onkeypress="return omit_special_char(event)" type="text" class="form-control" required/>
+                                <div *ngIf="supname.invalid && supname.touched">
+                                    <small *ngIf="supname.errors?.required" class="text-danger">Please enter supplier name</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="purinfo col-sm-6">
+                            <span class="pur_lbl">GSTIN Number</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="suppgstin" id="txtEmpName" onkeypress="return AvoidSpace(event)" type="text" minlength="15" maxlength="15" class="form-control" required/>
+                                <div *ngIf="gstinum.invalid && gstinum.touched">
+                                    <small *ngIf="gstinum.errors?.required" class="text-danger">Please enter GSTIN number</small>
+                                    <small *ngIf="gstinum.errors?.minlength" class="text-danger">Enter Minimum 15 character</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <span class="pur_lbl">Address</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="address" type="text" class="form-control" required/>
+                                <div *ngIf="address.invalid && address.touched">
+                                    <small *ngIf="address.errors?.required" class="text-danger">Please enter address</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <span class="pur_lbl">Mobile Number 1</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="mobnumber1" class="form-control" name="elementname" type="text" minlength="7" maxlength="13" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
+                                />
+                                <div *ngIf="mblnum1.invalid && mblnum1.touched">
+                                    <small *ngIf="mblnum1.errors?.required" class="text-danger">Please enter Mobile number1</small>
+                                    <small *ngIf="mblnum1.errors?.minlength" class="text-danger">Enter Minimum 7 character</small>
+                                    <small *ngIf="mblnum1.errors?.maxlength" class="text-danger">Enter Maximum 13 character</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <span class="pur_lbl">Mobile Number 2</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="mobnumber2" class="form-control" name="elementname" type="text" minlength="7" maxlength="13" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
+                                />
+                                <div *ngIf="mblnum2.invalid && mblnum2.touched">
+                                    <small *ngIf="mblnum2.errors?.required" class="text-danger">Please enter Mobile number2</small>
+                                    <small *ngIf="mblnum2.errors?.minlength" class="text-danger">Enter Minimum 7 character</small>
+                                    <small *ngIf="mblnum2.errors?.maxlength" class="text-danger">Enter Maximum 13 character</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <span class="pur_lbl">Vehicle Number</span><span class="imp">*</span><br>
+                            <div class="pur_input">
+                                <input formControlName="vehnumber" id="txtEmpName" maxlength="13" onkeypress="return omit_special_char(event)" type="text" class="form-control" required/>
+                                <div *ngIf="vehnum.invalid && vehnum.touched">
+                                    <small *ngIf="vehnum.errors?.required" class="text-danger">Please enter vehicle number</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead class="th_head">
+                            <tr>
+                                <th class="sel">#</th>
+                                <th class="invoice ">Product Name <span class="imp">*</span></th>
+                                <th class="date">HSN Code</th>
+                                <th class="product">No of bags <span class="imp">*</span></th>
+                                <th class="vehicle">Discount</th>
+                                <th class="bags">Tons</th>
+                                <th class="ptons ptons_1">Per Bag Value</th>
+                                <th class="tons tons_1">Basic Bag Value</th>
+                                <th class="amount">Total</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="tb_body">
+                            <tr>
+                                <td class="sel1">1</td>
+                                <td class="invoice1">
+                                    <!-- <div class="pur_input">
+                                        <select formControlName="prodname" type="text" name="options" class="form-control" (change)="products($event.target.value)">
+                                            <option selected disabled>--Select--</option>
+                                            <ng-container *ngFor="let prod of product_details; let index=index">
+                                            <option value={{index}}>{{prod.prodname}}</option>     
+                                            </ng-container>                              
+                                        </select>
+                                        <div *ngIf="prodescri.invalid && prodescri.touched">
+                                            <small *ngIf="prodescri.errors?.required" class="text-danger">Please select product Name</small>
+                                        </div>
+                                    </div> -->
+                                    <div class="pur_input">
+                                        <input formControlName="prodname" (input)="search_prodtype($event.target.value)" 
+                                        id="productid" placeholder="Search the product name" autocomplete="off" class="form-control" />
+                                        <select style="z-index: 2000;
+                                        height: 60px;
+                                        left: 89px;
+                                        right: 13px;
+                                        position: absolute;
+                                        top: 535px;
+                                        width: 15%;
+                                        display: none;
+                                        " id="product_name" class="form-control" size="5" (change)="Changeprodname($event.target.value)">
+                                            <ng-container *ngFor="let list of product_details; let i=index">
+                                                <option value={{list?._id}}>{{list?.prodname}}</option>
+                                            </ng-container>
+                                        </select>
+                                        <ng-container><small *ngIf="case_error1 =='case_error2'" class="text-danger">No Data</small></ng-container>
+                                        
+                                        <ng-container *ngIf="prodescri.invalid && prodescri.touched">
+                                            <small *ngIf="prodescri.errors?.required" class="text-danger">Please select
+                                                customer type</small>
+                                        </ng-container>
+                                      </div>
+                                </td>
+                                <ng-container>
+                                    <td class="date1">
+                                        <div class="pur_input">
+                                            <input formControlName="hsncode" type="text" class="form-control" disabled required/>
+                                        </div>
+                                    </td>
+                                    <td class="product1">
+                                        <div class="pur_input">
+                                            <input formControlName="noofbags" type="number" type="text" maxlength="5" name="elementname" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 100) ? null : event.charCode >= 48 && event.charCode <= 57" (input)="input_event($event.target.value)" class="form-control" required/>
+                                            <div *ngIf="nfbags.invalid && nfbags.touched">
+                                                <small *ngIf="nfbags.errors?.required" class="text-danger">Please enter no of bags </small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="vehicle1">
+                                        <div class="pur_input">
+                                            <input formControlName="discount" type="text" maxlength="10" name="elementname" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 100) ? null : event.charCode >= 48 && event.charCode <= 57" (input)="discount_event($event.target.value)" class="form-control" required/>
+                                        </div>
+                                    </td>
+                                    <td class="bags1">
+                                        <div class="pur_input">
+                                            <input formControlName="tons" type="number" class="form-control" disabled required/>
+                                        </div>
+                                    </td>
+                                    <td class="ptons1 ptons1_1">
+                                        <div class="pur_input">
+                                            <input id="productRate" formControlName="perbagvalue" type="number" class="form-control" disabled required/>
+                                        </div>
+                                    </td>
+                                    <td class="tons1 tons1_1">
+                                        <div class="pur_input">
+                                            <input formControlName="totbagvalue" type="number" class="form-control" disabled required/>
+                                        </div>
+                                    </td>
+
+                                    <td class="amount1">
+                                        <input currencyMask formControlName="total" class="form-control2 " type="text" disabled>
+                                    </td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="main1">
+                        <div class="col-sm-12">
+                            <div class="total">
+                                <div class="table1">
+                                    <tr>
+                                        <td class="tot_lbl1">Sub Total</td>
+                                        <td class="tot_lbl5"></td>
+                                        <td class="tot_value1"><input currencyMask formControlName="subtotal" type="text" class="form-control1" disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tot_lbl2">Taxes</td>
+                                        <td class="tot_lbl3">CGST 14%</td>
+                                        <td class="tot_value"><input currencyMask formControlName="cgst" type="text" class="form-control1" disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tot_lbl"></td>
+                                        <td class="tot_lbl4">SGST 14%</td>
+                                        <td class="tot_value"><input currencyMask formControlName="sgst" type="text" class="form-control1" disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="nettot">Net Total</td>
+                                        <td class="tot_lbl6"></td>
+                                        <td class="tot_value2"><input currencyMask formControlName="nettotal" type="text" class="form-control1" disabled></td>
+                                    </tr>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main1">
+                        <div class="conform">
+                            <button class="conf_btn" (click)="Submit_Purchase()">Confirm</button>
+                        </div>
+                        <div class="cancel">
+                            <button class="cenc_btn" (click)="Cancel()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

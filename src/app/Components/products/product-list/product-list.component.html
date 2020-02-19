@@ -1,0 +1,136 @@
+<div class="main">
+    <div class="productlist productlist_1 productlist_2">
+        <div class="container-fluid">
+            <div class="row1">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="purhead1 purhead1_1 purhead1_2 purhead1_3 purhead1_4 col-lg-5 col-sm-5">
+                        <h3><img class="img_icon" src="assets/img/box1.png" alt="">Products</h3>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                    <div class="add_det_btn add_det_btn_1 add_det_btn_2 col-lg-3 col-md-3 col-sm-3">
+                        <input type="text" (input)="search_event($event.target.value)" placeholder="Search" class="search_in search_in_1 search_in_2 search_in_3"><img class="search_icon search_icon_3" src="/assets/img/search.png">
+                    </div>
+                    <div class="add_det_btn add_det_btn_1 add_det_btn_2 add_det_btn_3 add_det_btn_4 col-lg-3 col-md-3 col-sm-3">
+                        <button (click)="onclick()"  class="addnewpur addnewpur_1 addnewpur_2 addnewpur_3 addnewpur_4" >ADD NEW PRODUCT</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal HTML -->
+            <div id="myModal" class="modal fade in">
+                <div class="modal-dialog1 modal-dialog_1 modal-dialog1_1 modal-dialog_2">
+                    <div class="modal-content1 modal-content_1">
+                        <div class="head">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Add New Product</h4>
+                        </div>
+                        <div class="body1">
+                            <div class="container1">
+                                <form [formGroup]="Newproduct" class="form-horizontal">
+                                    <div class="form_body">
+                                        <div class="contant">
+                                            <div class="col-sm-12">
+                                                <span class="pur_lbl">Product Name</span><span class="imp">*</span><br>
+                                                <div class="pur_input">
+                                                    <input formControlName="prodname" type="text" class="form-control" placeholder="" required>                                                    
+                                                    <div *ngIf="bname.invalid && bname.touched">
+                                                        <small *ngIf="bname.errors?.required" class="text-danger">Please enter brand name</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <span class="pur_lbl">HSN Code</span><span class="imp">*</span><br>
+                                                <div class="pur_input">
+                                                    <input formControlName="hsncode" type="text" class="form-control" placeholder="" required>                                                    
+                                                    <div *ngIf="hsnc.invalid && hsnc.touched">
+                                                        <small *ngIf="hsnc.errors?.required" class="text-danger">Please enter HSN code</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <span class="pur_lbl">Purchase Rate</span><span class="imp">*</span><br>
+                                                <div class="pur_input">
+                                                    <input formControlName="purchaserate" name="elementname"  type="text" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 10000000000) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control" required/>                                                    
+                                                    <div *ngIf="purrate.invalid && purrate.touched">
+                                                        <small *ngIf="purrate.errors?.required" class="text-danger">Please enter purchase rate</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <span class="pur_lbl">Sales Rate</span><span class="imp">*</span><br>
+                                                <div class="pur_input">
+                                                    <input formControlName="salerate"  name="elementname"  type="text" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 10000000000) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control"  required/>                                                   
+                                                    <div *ngIf="salesrate.invalid && salesrate.touched">
+                                                        <small *ngIf="salesrate.errors?.required" class="text-danger">Please enter sales rate</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="main2 main2_1">
+                                                <div class="conform">
+                                                    <button class="conf_btn" (click)="Submit_Product()"  *ngIf="modelbtn=='add'" >SAVE</button>
+                                                </div>
+                                                <div class="conform">
+                                                    <button class="conf_btn" (click)="Update_Product()" *ngIf="modelbtn=='edit'" >UPDATE</button>
+                                                </div>
+                                                <div class="cancel">
+                                                    <button class="cenc_btn" (click)="cancel()" >CANCEL</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main1">
+                <table class="table table-hover">
+                    <thead class="th_head">
+                        <tr>
+                            <th class="name name_1">Product Name&nbsp;&nbsp;</th>
+                            <th class="hsncode hsncode_1">HSN Code</th>
+                            <th class="purchaselist purchaselist_1">Purchase Rate</th>
+                            <th class="salesrate salesrate_1">Sales Rate</th>
+                            <th class="action action_1">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tb_body">
+                        <tr *ngFor="let product of Product_List | paginate: { itemsPerPage: currentPageCount, currentPage: p1,id: 'one'}; let i=index" >
+                            <td class="name1 name1_1">{{product.prodname}}</td>
+                            <td class="hsncode1 hsncode1_1">{{product.hsncode}}</td>
+                            <td class="purchaselist1 purchaselist1_1 purchaselist1_1">{{product.purchaserate}}</td>
+                            <td class="salesrate1 salesrate1_1 salesrate1_2">{{product.salerate}}</td>
+                            <td class="action1 action1_1"><img class="img_icon1" (click)="edit(product._id)" src="assets/img/edit.png" alt=""></td>
+                            <!-- &nbsp;&nbsp;&nbsp;&nbsp;<button class="iconbtn"><i style="font-size:14px" class="icon fa">&#xf1f8;</i></button> -->
+                        </tr>
+                        <!-- [attr.id]="product.id" -->         
+                        <!-- <a class="iconbtn"></a>               -->
+                        <!-- (click)="deleteRow(product.id)" -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="pagination" *ngIf="Product_List.length>10" >
+                <pagination-controls  (pageChange)="p1 = $event" #api id="one">
+                </pagination-controls>
+               
+            </div> -->
+            <div class="pagination" *ngIf="(Product_List?.length!=0 && Product_List?.length>=10) || (show_page == true)">
+                <span class="count_page" id="count_span">{{currentPageCount}}<i class="fa fa-angle-up" (click)="count_cal(1)"></i><i
+                        class="fa fa-angle-down" (click)="count_cal(2)"></i></span>
+                <button [disabled]="currentPage == 1" class="btn btn-default paginationbtn"
+                    (click)="paginatePartList('prev')"><i class="fa fa-angle-left"></i></button>
+
+                <ng-container *ngFor="let data of paginationCount; let i=index">
+                    <!-- <ng-container *ngIf="data<=3"> -->
+                    <span class="count_page add_pagecolor" *ngIf="pagecount == i"
+                        (click)="paginationClick(i+1)">{{data}}</span>
+                    <span class="count_page" *ngIf="pagecount != i" (click)="paginationClick(i)">{{data}}</span>
+                    <!-- </ng-container> -->
+                </ng-container>
+
+                <button [disabled]="currentPage == totalPages" class="btn btn-default paginationbtn"
+                    (click)="paginatePartList('next')"><i class="fa fa-angle-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

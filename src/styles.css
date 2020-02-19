@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/* .main {
+    animation: transitionIn 0.50s;
+}
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: rotateX(-20g);
+    }
+    to {
+        opacity: 0;
+        transform: rotateX(0);
+    }
+} */
+text.highcharts-title {
+    display: none;
+}
+text.highcharts-credits {
+    display: none;
+}
+g.highcharts-axis.highcharts-yaxis {
+    display: none;
+}
+
+/* multiple select box */
+ng-multiselect-dropdown#select {
+    height: 16px;
+    border: none;
+}
+span.selected-item {
+    font-size: 9px;
+    margin: 1px;
+    padding: 2px !important;
+}
+span.dropdown-btn {
+    padding: 0px 4px !important;
+    border-radius: 1px !important;
+}
+span.dropdown-up, span.dropdown-down {
+    margin: 0px;
+    padding: 0px;
+}
+.dropdown-list ul{
+    padding: 0;
+    list-style: none;
+    overflow: auto;
+    margin: 0px 0px 0px 0px;
+}
+.dropdown-list {
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: 0 1px 5px #959595;
+}
+.dropdown-list li{
+    padding: 6px 10px;
+    cursor: pointer;
+    text-align: left;
+    margin: 5px 0px 5px 0px;
+}

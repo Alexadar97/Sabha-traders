@@ -1,0 +1,48 @@
+<div class="row">
+  <!-- style="background-image: url('assets/img/login.png');" -->
+  <img src="assets/img/login.png">
+  <div class="login_page">
+    <!-- <div class=" col-lg-12">
+      <div class="img">
+        <img src="assets/img/login.png">
+      </div>
+    </div> -->
+    
+    <form [formGroup]="login" class="cont cont1 cont2 cont3 col-lg-6">
+      
+      <div class="log">
+        <div class="head head1 col-sm-12">
+          <h2 class="h2">SABHA TRADERS</h2>
+        </div>
+        <div class="col-sm-12">
+          <span class="pur_lbl">Email Id</span>
+          <div class="pur_input">
+            <input formControlName="email" type="email" class="form-control" placeholder="" required>
+            <div *ngIf="userid.invalid && userid.touched">
+              <small *ngIf="userid.errors?.required" class="text-danger">Please enter email id</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <span class="pur_lbl">Password</span>
+          <div class="pur_input">
+            <input formControlName="password" [type]="show_button1 ? 'text' : 'password'" placeholder="" class="form-control"/>
+            <span class="icu"><i [class]="show_eye1 ? 'fa fa-eye' : 'fa fa-eye-slash'" (click)="showPassword1()"></i></span>
+            <div *ngIf="password.invalid && password.touched">
+              <small *ngIf="password.errors?.required" class="text-danger">Please enter correct password</small>
+            </div>
+            <span><a class="forget" (click)="forget()">Forgot Password</a></span>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="conform">
+            <button class="conf_btn conf_btn1 conf_btn2" (click)="onLogin()">Login</button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+
+</div>

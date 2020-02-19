@@ -1,0 +1,150 @@
+<div class="main main_1">
+    <div class="payment payment_1 payment_2">
+        <div class="container-fluid">
+            <div class="row1">
+                <div class="col-lg-12">
+                    <div class="purhead1 col-lg-5">
+                        <h3><img class="img_icon" src="assets/img/payment1.png" alt="">Payments</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container1">
+            <form [formGroup]="Payment" class="form-horizontal">
+                <div class="form_body">
+                    <div class="contant col-lg-12">
+                        <div class="col-sm-6">
+                            <div class="cus col-sm-6">
+                                <span class="pur_lbl">Select Customer Type</span><span class="imp">*</span><br>
+                                <div class="pur_input">
+                                    <select (change)="checkbox($event.target.value)" type="text" class="form-control1">
+                                        <option value="null" disabled>Select Customer Type</option>
+                                        <option value="Sub Dealer">Sub Dealer</option>
+                                        <option value="Customer of Sub Dealer">Customer of Sub Dealer</option>
+                                        <option value="Walk in Customer">Walk in Customer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="add_det_btn add_det_btn_1 add_det_btn_2 col-sm-6" *ngIf="showCus_Name">
+                                <span class="pur_lbl">Customer Name</span><span class="imp">*</span><br>
+                                <input formControlName="custid" (input)="search_custype1($event.target.value)"
+                                id="customername" placeholder="Search & select the customer name" autocomplete="off" class="form-control" />
+                                <select style="position: absolute;z-index: 2000;display: none;    height: 60px;
+                                left: 0px;
+                                right: 13px;
+                                top: 55px;
+                                width: 307px;" id="selectcustomer" class="form-control" size="5" (change)="Changeselectcd5($event.target.value)">
+                                    <ng-container *ngFor="let list of cus_name; let i=index">
+                                        <option value={{list?._id}}>{{list?.name}}-{{list?.mobnumber}}</option>
+                                    </ng-container>
+                                    
+                                </select>
+                                <span *ngIf="case_error =='case_error'" class="text-danger">No Data</span>
+                                <ng-container *ngIf="custype.invalid && custype.touched">
+                                    <small *ngIf="custype.errors?.required" class="text-danger">Please select
+                                        customer name</small>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <span class="pur_lbl">Pending Amount</span><br>
+                            <ng-container>
+                                <div class="pur_input">
+                                    <input currencyMask formControlName="pendingamount" class="amt" disabled />
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div *ngIf="modelbtn1 =='pay'">
+                        <div class="contant col-lg-12">
+                            <div class="col-sm-12">
+                                <span class="pur_lbl">Case type</span><span class="imp">*</span><br>
+                                <div class="pur_input">
+                                    <div class="rdbtn1 rdbtn1_1 col-sm-2">
+                                        <label class="container">Cash
+                                            <input type="radio" (click)="checkbox1($event.target.value)" name="type"
+                                                formControlName="type" value="Cash" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="rdbtn4 rdbtn4_1 col-sm-2">
+                                        <label class="container">Cheque
+                                            <input type="radio" (click)="checkbox2($event.target.value)" name="type"
+                                                formControlName="type" value="Cheque" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <ng-container *ngIf="ctype.invalid && ctype.touched">
+                                        <small *ngIf="ctype.errors?.required" class="text-danger">Please select case
+                                            type</small>
+                                    </ng-container>
+                                </div>
+                            </div>
+                            <div class="col-sm-6" *ngIf="modelbtn=='CASE1'">
+                                <span class="pur_lbl">Cash</span><span class="imp">*</span><br>
+                                <div class="pur_input">
+                                    <input formControlName="cashamount" (input)="input_case_amt($event.target.value)" type="text" maxlength="20" name="elementname" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 100) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control2 form-control1_1"
+                                        placeholder="" required>
+                                    <div *ngIf="cash.invalid && cash.touched">
+                                        <small *ngIf="cash.errors?.required" class="text-danger">Please enter
+                                            cash</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contant col-lg-12" *ngIf="modelbtn=='Cheque'">
+                            <div class="col-sm-3">
+                                <span class="pur_lbl">Cheque Amount</span><span class="imp">*</span><br>
+                                <div class="pur_input">
+                                    <input formControlName="chequeamount" (input)="input_cheque_amt($event.target.value)" type="text" maxlength="20" name="elementname" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 100) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control" placeholder=""
+                                        required>
+                                    <div *ngIf="chvalue.invalid && chvalue.touched">
+                                        <small *ngIf="chvalue.errors?.required" class="text-danger">Please enter cheque amount</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <span class="pur_lbl">Cheque No</span><span class="imp">*</span><br>
+                                <div class="pur_input">
+                                    <input formControlName="chequenumber" type="text" maxlength="6" name="elementname" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 100) ? null : event.charCode >= 48 && event.charCode <= 57" class="form-control" placeholder=""
+                                        required>
+                                    <div *ngIf="chno.invalid && chno.touched">
+                                        <small *ngIf="chno.errors?.required" class="text-danger">Please enter cheque no</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <span class="pur_lbl">Bank Name</span><span class="imp">*</span><br>
+                                <div class="pur_input">
+                                    <input formControlName="bankname" type="text" class="form-control" placeholder="" required>
+                                    <div *ngIf="bankname.invalid && bankname.touched">
+                                        <small *ngIf="bankname.errors?.required" class="text-danger">Please enter bank name</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <span class="pur_lbl">Cheque Date</span><span class="imp">*</span><br>
+                                <div class="pur_input">
+                                    <!-- <input formControlName="chequedate" id="chequeDate" type="date" class="form-control" placeholder="" required> -->
+                                    <input type="text" [minDate]="today" formControlName="chequedate" placeholder="DD-MM-YYYY" class="form-control" autocomplete="off" bsDatepicker [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY' }" id="chequeDate">
+                                     
+                                    <div *ngIf="chdate.invalid && chdate.touched">
+                                        <small *ngIf="chdate.errors?.required" class="text-danger">Please enter cheque date</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main1">
+                        <div class="conform" *ngIf="modelbtn1=='pay'">
+                            <button class="conf_btn" (click)="Submit_Payment()">Update</button>
+                        </div>
+                        <div class="cancel">
+                            <button class="cenc_btn" (click)="Cancel()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

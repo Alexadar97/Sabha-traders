@@ -1,0 +1,70 @@
+<div class="main1">
+                        <table class="table">
+                            <thead class="th_head">
+                                <tr>
+                                    <th class="sel">#</th>
+                                    <th class="invoice">Product Description</th>
+                                    <th class="date">HSN Code</th>
+                                    <th class="vehicle">Discount</th>
+                                    <th class="product">No of bags</th>
+                                    <th class="bags">Tons</th>
+                                    <th class="tons">Per Bag Value</th>
+                                    <th class="amount">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tb_body">
+                                <tr>
+                                    <td class="sel">1</td>
+                                    <td class="invoice1">
+                                        <div class="pur_input">
+                                            <select formControlName="productdescription" type="text" class="form-control" placeholder="" required>
+                                             <option selected>--Select--</option>
+                                             <option >{{cout}}</option>                                          
+                                         </select>
+                                        </div>
+                                    </td>
+                                    <td class="date">
+                                        <div class="pur_input">
+                                            <input formControlName="hsncode" type="text" class="form-control" placeholder="" required>
+                                            <!-- <div *ngIf="hsncode.invalid && hsncode.touched">
+                                        <small *ngIf="hsncode.errors?.required" class="text-danger">Please enter HSN Code</small>
+                                    </div> -->
+                                        </div>
+                                    </td>
+                                    <td class="vehicle">
+                                        <div class="pur_input">
+                                            <input formControlName="discount" type="text" class="form-control" placeholder="" required>
+                                            <!-- <div *ngIf="discount.invalid && discount.touched">
+                                        <small *ngIf="discount.errors?.required" class="text-danger">Please enter Discount</small>
+                                    </div> -->
+                                        </div>
+                                    </td>
+                                    <td class="product">
+                                        <div class="pur_input">
+                                            <input formControlName="nfbags" type="text" class="form-control" placeholder="" required>
+                                            <!-- <div *ngIf="nfbags.invalid && nfbags.touched">
+                                    <small *ngIf="nfbags.errors?.required" class="text-danger">Please enter No of bags</small>
+                                </div> -->
+                                        </div>
+                                    </td>
+                                    <td class="bags">
+                                        <div class="pur_input">
+                                            <input formControlName="tons" type="text" class="form-control" placeholder="" required>
+                                            <!-- <div *ngIf="tons.invalid && tons.touched">
+                                    <small *ngIf="tons.errors?.required" class="text-danger">Please enter Tons</small>
+                                </div> -->
+                                        </div>
+                                    </td>
+                                    <td class="tons">
+                                        <div class="pur_input">
+                                            <input formControlName="perbagvalue" type="text" class="form-control" placeholder="" required>
+                                            <!-- <div *ngIf="pbv.invalid && pbv.touched">
+                                        <small *ngIf="pbv.errors?.required" class="text-danger">Please enter Per Bag Value</small>
+                                    </div> -->
+                                        </div>
+                                    </td>
+                                    <td class="amount"><span>&#8377;</span>20,250</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>

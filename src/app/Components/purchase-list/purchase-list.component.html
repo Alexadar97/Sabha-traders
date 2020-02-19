@@ -1,0 +1,118 @@
+<div class="main">
+    <div class="purchaseList purchaseList_1 purchaseList_2 purchaseList_3">
+        <div class="container-fluid">
+            <div class="row1">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="purhead1 purhead1_1 purhead1_2 purhead1_3 purhead1_4 col-lg-5 col-sm-5">
+                        <h3><img class="img_icon" src="assets/img/product1.png" alt="">Purchase</h3>
+                    </div>
+                    <div class="purfil purfil1 col-lg-1 col-sm-1" [formGroup]="Purchase_Filiter">
+                        <button (click)="onFilter()" class="filter_btn filter_btn_1 filter_btn_2 filter_btn_3 filter_btn_4"><img
+                                src="/assets/img/Group 3.png"><span class="fil_num" *ngIf="icon">{{Purchase_List.length}}</span></button>
+                        <span class="tooltiptext tooltiptext1 tooltiptext2 tooltiptext3 tooltiptext4" *ngIf="filiter=='filiter'">
+                            <div class="col-xs-12">
+                                <span class="lbl col-xs-6">Date:</span>
+                                <div class="txt col-xs-6">
+                                    <!-- <input type="date" id="Date" class="form-control" formControlName="date"> -->
+                                    <input type="text" formControlName="date" placeholder="DD-MM-YYYY" class="form-control" autocomplete="off" bsDatepicker [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY' }" id="Date">
+                                     
+                                </div>
+                            </div>
+                            <div class="col-xs-12" style="margin-bottom: 7px;">
+                                <span class="lbl col-xs-6">Product Name:</span>
+                                <div class="txt col-xs-6">
+                                    <ng-multiselect-dropdown [placeholder]="''" id="select"
+                                    [(data)]="Product_Filiter_list" [(ngModel)]="selectedItems" formControlName="productNames"
+                                    [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+                                    (onSelectAll)="onSelectAll($event)" class="form-control">
+                                  </ng-multiselect-dropdown>
+                                </div>
+                            </div>
+                            <div class="col-xs-12" style="margin-bottom: 13px;">
+                                <span class="lbl col-xs-6">Branch Name:</span>
+                                <div class="txt col-xs-6">  <ng-multiselect-dropdown [placeholder]="''" id="select"
+                                    [(data)]="Branch_Filiter_list" [(ngModel)]="selectedItems1" formControlName="branchNames"
+                                    [settings]="dropdownSettings1" (onSelect)="onItemSelect1($event)"
+                                    (onSelectAll)="onSelectAll1($event)" class="form-control">
+                                  </ng-multiselect-dropdown>    
+                                </div>
+
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="flt_btn1 col-xs-6">
+                                    <button (click)="clear_filiter()" class="clr_flt">Clear Filters</button>
+                                </div>
+                                <div class="flt_btn2 col-xs-6">
+                                    <button class="aply_flt" (click)="Apply_filter()">Apply Filters</button>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="add_det_btn add_det_btn_1 add_det_btn_2 add_det_btn_4 col-lg-3 col-sm-3">
+                        <input type="text" (input)="search_event($event.target.value)" placeholder="Search"
+                            class="search_in search_in_1 search_in_2 search_in_3 search_in_4"><img class="search_icon"
+                            src="/assets/img/search.png">
+                    </div>
+
+                    <div class="add_det_btn add_det_btn_1 add_det_btn_2 add_det_btn_3 add_det_btn_4 col-lg-3 col-sm-3">
+                        <button (click)="onclick()" class="addnewpur addnewpur_1 addnewpur_2 addnewpur_4">ADD NEW PURCHASE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="main1">
+                <form>
+                    <table class="table table-hover">
+                        <thead class="th_head">
+                            <tr>
+                                <th class="invoice invoice_1">Invoice Number</th>
+                                <th class="date date_1">Date&nbsp;&nbsp;</th>
+                                <th class="vehicle vehicle_1">Vehicle Number</th>
+                                <th class="branch branch_1 branch1_1">Branch Name</th>
+                                <th class="product product_1">Product Name</th>
+                                <th class="bags bags_1">Total Bags</th>
+                                <th class="tons tons_1">Total Tons</th>
+                                <th class="amount amount_1">Total Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tb_body">
+                            <tr
+                                *ngFor="let purchase of Purchase_List | paginate: { itemsPerPage: currentPageCount, currentPage: p1,id: 'one'}; let i=index">
+                                <td class="invoice1 invoice1_1">{{purchase.invoicenum}}</td>
+                                <td class="date1 date1_1">{{purchase.date}}</td>
+                                <td class="vehicle1 vehicle1_1">{{purchase.vehnumber}}</td>
+                                <td class="branch1 branch1_1">{{purchase.branch.branchname}}</td>
+                                <ng-container *ngFor="let data of purchase.products">
+                                    <td class="product1 product1_1">{{data.prodname}}</td>
+                                    <td class="bags1 bags1_1">{{data.noofbags}}</td>
+                                    <td class="tons1 tons1_1">{{data.tons}}</td>
+                                </ng-container>
+                                <td class="amount1 _1">{{purchase.nettotal}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <!-- <div class="pagination" *ngIf="Purchase_List.length>10">
+                <pagination-controls (pageChange)="p1 = $event" #api id="one">
+                </pagination-controls>
+            </div> -->
+            <div class="pagination" *ngIf="(Purchase_List?.length!=0 && Purchase_List?.length>=10) || (show_page == true)">
+                <span class="count_page" id="count_span">{{currentPageCount}}<i class="fa fa-angle-up" (click)="count_cal(1)"></i><i
+                        class="fa fa-angle-down" (click)="count_cal(2)"></i></span>
+                <button [disabled]="currentPage == 1" class="btn btn-default paginationbtn"
+                    (click)="paginatePartList('prev')"><i class="fa fa-angle-left"></i></button>
+
+                <ng-container *ngFor="let data of paginationCount; let i=index">
+                    <!-- <ng-container *ngIf="data<=3"> -->
+                    <span class="count_page add_pagecolor" *ngIf="pagecount == i"
+                        (click)="paginationClick(i+1)">{{data}}</span>
+                    <span class="count_page" *ngIf="pagecount != i" (click)="paginationClick(i)">{{data}}</span>
+                    <!-- </ng-container> -->
+                </ng-container>
+
+                <button [disabled]="currentPage == totalPages" class="btn btn-default paginationbtn"
+                    (click)="paginatePartList('next')"><i class="fa fa-angle-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
